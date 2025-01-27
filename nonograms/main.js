@@ -37,24 +37,56 @@ function createGameField () {
     for (let col = 0; col < 5; col++) {
       const cell = document.createElement('div');
       cell.classList.add('cell');
+      cell.dataset.row = row;
+      cell.dataset.col = col;
+
+      cell.addEventListener('click', () => markedCell(cell));
+      cell.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        crossedCell(cell);
+      });
       gameField.appendChild(cell);
     }
   }
 }
 
 function createTopClues () {
-  for (let row = 0; row < 5; row++) {
+  const clues = [1, 2, 3, 4, 5];
+  for (let i = 0; i < 5; i++) {
     const topClueCell = document.createElement('div');
     topClueCell.classList.add('top-clue-cell');
+    topClueCell.textContent = clues[i];
     topClues.appendChild(topClueCell);
   }
 }
 
 function createLeftClues () {
-  for (let col = 0; col < 5; col++) {
+  const clues = [1, 2, 3, 4, 5];
+  for (let i = 0; i < 5; i++) {
     const leftClueCell = document.createElement('div');
     leftClueCell.classList.add('left-clue-cell');
+    leftClueCell.textContent = clues[i];
     leftClues.appendChild(leftClueCell);
+  }
+}
+
+function markedCell (cell) {
+  if (cell.classList.contains('active')) {
+    cell.classList.remove('active');
+    cell.classList.add('empty');
+  } else {
+    cell.classList.add('active');
+    cell.classList.remove('empty');
+  }
+}
+
+function crossedCell (cell) {
+  if (cell.classList.contains('cross')) {
+    cell.classList.remove('cross');
+    cell.classList.add('empty');
+  } else {
+    cell.classList.add('cross');
+    cell.classList.remove('empty', 'active');
   }
 }
 

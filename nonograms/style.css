@@ -83,3 +83,35 @@ html {
     height: 30px;
     border: 0.5px solid black;
 }
+
+.cell.active {
+  background-color: black;
+}
+
+.cell.empty {
+  background-color: white;
+}
+
+.cell.cross {
+  position: relative;
+  background-color: white;
+}
+
+.cell.cross::before,
+.cell.cross::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background-color: black;
+}
+
+.cell.cross::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cell.cross::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
