@@ -36,24 +36,29 @@ html {
 
   .game-section {
     display: grid;
-    grid-template-columns: 50px repeat(5, 30px);
-    grid-template-rows: 50px repeat(5, 30px);
+    grid-template-columns: repeat(5, 30px);
+    grid-template-rows: repeat(5, 30px);
     gap: 0;
-    
+    box-sizing: border-box;
   }
 
   .top-clues {
     display: grid;
     grid-column: 2 / span 5;
     grid-template-columns: repeat(5, 30px);
+    grid-template-rows: 30px;
     gap: 0;
+    box-sizing: border-box;
+    border-bottom: 0.5px solid black;
   }
 
   .left-clues {
     display: grid;
     grid-row: 2 / span 5;
+    grid-template-columns: 30px;
     grid-template-rows: repeat(5, 30px);
-    gap: 0;
+    border-right: 0.5px solid black;
+    box-sizing: border-box;
   }
 
   .game-field {
@@ -62,26 +67,31 @@ html {
     grid-row: 2 / span 5;
     grid-template-columns: repeat(5, 30px);
     grid-template-rows: repeat(5, 30px);
-
+    gap: 0;
   }
 
   .cell {
     width: 30px;
     height: 30px;
     cursor: pointer;
-    border: 0.5px solid black;
+    gap: 0;
+    border-bottom: 0.5px solid black;
+    border-right: 0.5px solid black;
+    box-sizing: border-box;
 }
 
 .top-clue-cell {
     width: 30px;
-    height: auto;
-    border: 0.5px solid black;
+    height: 30px;
+    border-right: 0.5px solid black;
+    box-sizing: border-box;
 }
 
 .left-clue-cell {
-    width: auto;
+    width: 30px;
     height: 30px;
-    border: 0.5px solid black;
+    border-bottom: 0.5px solid black;
+    box-sizing: border-box;
 }
 
 .cell.active {
