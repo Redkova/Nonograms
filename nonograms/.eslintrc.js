@@ -11,5 +11,6 @@ module.exports = {
     indent: ['error', 2],
     'space-before-function-paren': ['error', 'always'],
     'object-curly-spacing': ['error', 'always'],
+    'no-plusplus': 'off',
   },
 };

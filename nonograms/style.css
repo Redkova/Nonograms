@@ -33,3 +33,53 @@ html {
     font-size: 50px;
     color: #212121;
   }
+
+  .game-section {
+    display: grid;
+    grid-template-columns: 50px repeat(5, 30px);
+    grid-template-rows: 50px repeat(5, 30px);
+    gap: 0;
+    
+  }
+
+  .top-clues {
+    display: grid;
+    grid-column: 2 / span 5;
+    grid-template-columns: repeat(5, 30px);
+    gap: 0;
+  }
+
+  .left-clues {
+    display: grid;
+    grid-row: 2 / span 5;
+    grid-template-rows: repeat(5, 30px);
+    gap: 0;
+  }
+
+  .game-field {
+    display: grid;
+    grid-column: 2 / span 5;
+    grid-row: 2 / span 5;
+    grid-template-columns: repeat(5, 30px);
+    grid-template-rows: repeat(5, 30px);
+
+  }
+
+  .cell {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border: 0.5px solid black;
+}
+
+.top-clue-cell {
+    width: 30px;
+    height: auto;
+    border: 0.5px solid black;
+}
+
+.left-clue-cell {
+    width: auto;
+    height: 30px;
+    border: 0.5px solid black;
+}
