@@ -24,17 +24,21 @@ gameField.classList.add('game-field');
 
 gameSection.append(topClues, leftClues, gameField);
 
-const patternSelector = document.createElement('select');
-patternSelector.classList.add('pattern-selector');
-
 const gameControl = document.createElement('div');
 gameControl.classList.add('game-control');
 
+const patternSelector = document.createElement('select');
+patternSelector.classList.add('pattern-selector');
+
 const resetButton = document.createElement('button');
 resetButton.textContent = 'Reset Game';
-resetButton.classList.add('reset-button');
+resetButton.classList.add('button');
 
-gameControl.append(resetButton, patternSelector);
+const saveButton = document.createElement('button');
+saveButton.textContent = 'Save Game';
+saveButton.classList.add('button');
+
+gameControl.append(patternSelector, resetButton, saveButton);
 
 main.append(
   header,
@@ -275,4 +279,27 @@ resetButton.addEventListener('click', () => {
 function resetGame () {
   const currentPattern = patterns[patternSelector.value];
   createGameField(currentPattern);
+}
+
+saveButton.addEventListener('click', () => {
+  saveGame();
+});
+
+function saveGame () {
+  const cells = Array.from(gameField.querySelectorAll('.cell'));
+  const gameState = cells.map((cell) => ({
+    row: cell.dataset.row,
+    col: cell.dataset.col,
+    active: cell.classList.contains('active'),
+    cross: cell.classList.contains('cross'),
+  }));
+
+  const currentPattern = patternSelector.value;
+
+  const savedData = {
+    patternName: currentPattern,
+    gameState,
+  };
+
+  localStorage.setItem('nonogramGame', JSON.stringify(savedData));
 }
