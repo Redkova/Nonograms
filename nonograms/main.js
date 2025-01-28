@@ -88,24 +88,65 @@ function createGameField (pattern) {
   }
 }
 
-function createTopClues () {
-  const clues = [1, 2, 3, 4, 5];
-  for (let i = 0; i < 5; i++) {
-    const topClueCell = document.createElement('div');
-    topClueCell.classList.add('top-clue-cell');
-    topClueCell.textContent = clues[i];
-    topClues.appendChild(topClueCell);
+function generateClues (pattern) {
+  const rows = pattern.length;
+  const cols = pattern[0].length;
+
+  const rowClues = pattern.map((row) => {
+    const clues = [];
+    let count = 0;
+
+    row.forEach((cell) => {
+      if (cell === 1) {
+        count++;
+      } else if (count > 0) {
+        clues.push(count);
+        count = 0;
+      }
+    });
+    if (count > 0) clues.push(count);
+
+    return clues;
+  });
+
+  const colClues = [];
+  for (let col = 0; col < cols; col++) {
+    const clues = [];
+    let count = 0;
+
+    for (let row = 0; row < rows; row++) {
+      if (pattern[row][col] === 1) {
+        count++;
+      } else if (count > 0) {
+        clues.push(count);
+        count = 0;
+      }
+    }
+    if (count > 0) clues.push(count);
+
+    colClues.push(clues);
   }
+
+  return { rowClues, colClues };
 }
 
-function createLeftClues () {
-  const clues = [1, 2, 3, 4, 5];
-  for (let i = 0; i < 5; i++) {
-    const leftClueCell = document.createElement('div');
-    leftClueCell.classList.add('left-clue-cell');
-    leftClueCell.textContent = clues[i];
-    leftClues.appendChild(leftClueCell);
-  }
+function createTopClues (colClues) {
+  colClues.forEach((clue) => {
+    const clueCell = document.createElement('div');
+    clueCell.classList.add('top-clue-cell');
+    clueCell.textContent = clue.join(' ');
+    topClues.appendChild(clueCell);
+  });
+}
+
+function createLeftClues (rowClues) {
+  leftClues.innerHTML = '';
+  rowClues.forEach((clue) => {
+    const clueCell = document.createElement('div');
+    clueCell.classList.add('left-clue-cell');
+    clueCell.textContent = clue.join(' ');
+    leftClues.appendChild(clueCell);
+  });
 }
 
 function markedCell (cell) {
@@ -128,5 +169,6 @@ function crossedCell (cell) {
   }
 }
 createGameField(pattern);
-createTopClues();
-createLeftClues();
+createTopClues(colClues);
+createLeftClues(rowClues);
+generateClues(pattern);
