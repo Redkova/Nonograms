@@ -39,8 +39,8 @@ html {
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
   gap: 0;
-  margin: 0 auto;
   box-sizing: border-box;
+margin-bottom: 30px;
 }
 
 .top-clues {
@@ -127,4 +127,28 @@ html {
 
 .cell.cross::after {
   transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.game-control {
+  display: flex;
+  gap: 15px;
+}
+
+.reset-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;;
+  color: #f7f7f7;
+  cursor: pointer;
+}
+
+.pattern-selector {
+  padding: 5px 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #cfd8dc;
+  color: #212121;
+  cursor: pointer;
 }

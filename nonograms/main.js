@@ -28,7 +28,7 @@ const patternSelector = document.createElement('select');
 patternSelector.classList.add('pattern-selector');
 
 const gameControl = document.createElement('div');
-gameControl.classList.add('buttons-section');
+gameControl.classList.add('game-control');
 
 const resetButton = document.createElement('button');
 resetButton.textContent = 'Reset Game';
