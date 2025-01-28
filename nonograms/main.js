@@ -70,9 +70,9 @@ const patterns = {
   ],
 };
 
-function createGameField () {
-  for (let row = 0; row < 5; row++) {
-    for (let col = 0; col < 5; col++) {
+function createGameField (pattern) {
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[0].length; col++) {
       const cell = document.createElement('div');
       cell.classList.add('cell');
       cell.dataset.row = row;
@@ -127,7 +127,6 @@ function crossedCell (cell) {
     cell.classList.remove('empty', 'active');
   }
 }
-
-createGameField();
+createGameField(pattern);
 createTopClues();
 createLeftClues();
