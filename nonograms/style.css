@@ -46,7 +46,6 @@ html {
 .top-clues {
   grid-column: 2;
   display: grid;
-  grid-template-rows: 30px; 
   gap: 0; 
   box-sizing: border-box;
 }
@@ -55,7 +54,6 @@ html {
   grid-column: 1;
   grid-row: 2;
   display: grid;
-  grid-template-columns: 30px;
   gap: 0;
   box-sizing: border-box;
 }
@@ -92,6 +90,8 @@ html {
 }
 
 .clue-table th {
+  width: 30px;
+  height: 30px;
   text-align: center;
   border: 1px solid black;
   border-collapse: collapse;

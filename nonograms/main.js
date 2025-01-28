@@ -154,32 +154,53 @@ function createTopClues (colClues) {
   const table = document.createElement('table');
   table.classList.add('clue-table');
 
-  const tr = document.createElement('tr');
+  const maxClues = Math.max(...colClues.map((clue) => clue.length));
 
-  colClues.forEach((clue) => {
-    const th = document.createElement('th');
-    th.classList.add('top-clue');
-    th.textContent = clue.join(' ');
-    tr.appendChild(th);
-  });
-  table.appendChild(tr);
+  for (let i = 0; i < maxClues; i++) {
+    const tr = document.createElement('tr');
+    colClues.forEach((clue) => {
+      const th = document.createElement('th');
+      th.classList.add('top-clue');
+      if (clue.length > i) {
+        th.textContent = clue[i];
+      }
+      tr.appendChild(th);
+    });
+    table.appendChild(tr);
+  }
+
   topClues.appendChild(table);
 }
 
 function createLeftClues (rowClues) {
   leftClues.innerHTML = '';
-
   const table = document.createElement('table');
   table.classList.add('clue-table');
 
+  const maxClues = Math.max(...rowClues.map((clue) => clue.length));
+
   rowClues.forEach((clue) => {
     const tr = document.createElement('tr');
-    const th = document.createElement('th');
-    th.classList.add('left-clue');
-    th.textContent = clue.join(' ');
-    tr.appendChild(th);
+
+    for (let i = 0; i < maxClues; i++) {
+      const th = document.createElement('th');
+      th.classList.add('left-clue');
+
+      if (clue.length > i) {
+        th.textContent = clue[clue.length - 1 - i];
+      } else {
+        th.textContent = '';
+      }
+      if (clue.length === 1 && i === 0) {
+        tr.appendChild(th);
+      } else {
+        tr.insertBefore(th, tr.firstChild);
+      }
+    }
+
     table.appendChild(tr);
   });
+
   leftClues.appendChild(table);
 }
 
