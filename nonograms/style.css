@@ -34,64 +34,67 @@ html {
     color: #212121;
   }
 
-  .game-section {
-    display: grid;
-    grid-template-columns: repeat(5, 30px);
-    grid-template-rows: repeat(5, 30px);
-    gap: 0;
-    box-sizing: border-box;
-  }
-
-  .top-clues {
-    display: grid;
-    grid-column: 2 / span 5;
-    grid-template-columns: repeat(5, 30px);
-    grid-template-rows: 30px;
-    gap: 0;
-    box-sizing: border-box;
-    border-bottom: 0.5px solid black;
-
-  }
-
-  .left-clues {
-    display: grid;
-    grid-row: 2 / span 5;
-    grid-template-columns: 30px;
-    grid-template-rows: repeat(5, 30px);
-    border-right: 0.5px solid black;
-    box-sizing: border-box;
-  }
-
-  .game-field {
-    display: grid;
-    grid-column: 2 / span 5;
-    grid-row: 2 / span 5;
-    grid-template-columns: repeat(5, 30px);
-    grid-template-rows: repeat(5, 30px);
-    gap: 0;
-  }
-
-  .cell {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    gap: 0;
-    border-bottom: 0.5px solid black;
-    border-right: 0.5px solid black;
-    box-sizing: border-box;
+.game-section {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.top-clue-cell {
-    border-right: 0.5px solid black;
-    box-sizing: border-box;
+.top-clues {
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: 30px; 
+  gap: 0; 
+  box-sizing: border-box;
 }
 
-.left-clue-cell {
-    width: auto;
-    height: 30px;
-    border-bottom: 0.5px solid black;
-    box-sizing: border-box;
-  
+.left-clues {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 30px;
+  gap: 0;
+  box-sizing: border-box;
+}
+
+.game-field {
+  display: grid;
+  grid-column: 2;
+  grid-row: 2;
+  gap: 0;
+  box-sizing: border-box;
+  border-collapse: collapse;
+}
+
+.game-table {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.game-table td {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.clue-table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.clue-table th {
+  text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 
 .cell.active {

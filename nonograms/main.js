@@ -83,21 +83,28 @@ Object.keys(patterns).forEach((patternName) => {
 
 function createGameField (pattern) {
   gameField.innerHTML = '';
-  for (let row = 0; row < pattern.length; row++) {
-    for (let col = 0; col < pattern[0].length; col++) {
-      const cell = document.createElement('div');
-      cell.classList.add('cell');
-      cell.dataset.row = row;
-      cell.dataset.col = col;
 
-      cell.addEventListener('click', () => markedCell(cell));
-      cell.addEventListener('contextmenu', (e) => {
+  const table = document.createElement('table');
+  table.classList.add('game-table');
+
+  for (let row = 0; row < pattern.length; row++) {
+    const tr = document.createElement('tr');
+    for (let col = 0; col < pattern[row].length; col++) {
+      const td = document.createElement('td');
+      td.classList.add('cell');
+      td.dataset.row = row;
+      td.dataset.col = col;
+
+      td.addEventListener('click', () => markedCell(td));
+      td.addEventListener('contextmenu', (e) => {
         e.preventDefault();
-        crossedCell(cell);
+        crossedCell(td);
       });
-      gameField.appendChild(cell);
+      tr.appendChild(td);
     }
+    table.appendChild(tr);
   }
+  gameField.appendChild(table);
 }
 
 function generateClues (pattern) {
@@ -144,23 +151,36 @@ function generateClues (pattern) {
 
 function createTopClues (colClues) {
   topClues.innerHTML = '';
+  const table = document.createElement('table');
+  table.classList.add('clue-table');
+
+  const tr = document.createElement('tr');
+
   colClues.forEach((clue) => {
-    const clueCell = document.createElement('div');
-    clueCell.classList.add('top-clue-cell');
-    clueCell.textContent = clue.join(' ');
-    topClues.appendChild(clueCell);
+    const th = document.createElement('th');
+    th.classList.add('top-clue');
+    th.textContent = clue.join(' ');
+    tr.appendChild(th);
   });
+  table.appendChild(tr);
+  topClues.appendChild(table);
 }
 
 function createLeftClues (rowClues) {
   leftClues.innerHTML = '';
-  leftClues.innerHTML = '';
+
+  const table = document.createElement('table');
+  table.classList.add('clue-table');
+
   rowClues.forEach((clue) => {
-    const clueCell = document.createElement('div');
-    clueCell.classList.add('left-clue-cell');
-    clueCell.textContent = clue.join(' ');
-    leftClues.appendChild(clueCell);
+    const tr = document.createElement('tr');
+    const th = document.createElement('th');
+    th.classList.add('left-clue');
+    th.textContent = clue.join(' ');
+    tr.appendChild(th);
+    table.appendChild(tr);
   });
+  leftClues.appendChild(table);
 }
 
 function markedCell (cell) {
