@@ -50,6 +50,7 @@ html {
     gap: 0;
     box-sizing: border-box;
     border-bottom: 0.5px solid black;
+
   }
 
   .left-clues {
@@ -81,17 +82,16 @@ html {
 }
 
 .top-clue-cell {
-    width: 30px;
-    height: 30px;
     border-right: 0.5px solid black;
     box-sizing: border-box;
 }
 
 .left-clue-cell {
-    width: 30px;
+    width: auto;
     height: 30px;
     border-bottom: 0.5px solid black;
     box-sizing: border-box;
+  
 }
 
 .cell.active {

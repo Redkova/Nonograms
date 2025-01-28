@@ -82,6 +82,7 @@ Object.keys(patterns).forEach((patternName) => {
 });
 
 function createGameField (pattern) {
+  gameField.innerHTML = '';
   for (let row = 0; row < pattern.length; row++) {
     for (let col = 0; col < pattern[0].length; col++) {
       const cell = document.createElement('div');
@@ -142,6 +143,7 @@ function generateClues (pattern) {
 }
 
 function createTopClues (colClues) {
+  topClues.innerHTML = '';
   colClues.forEach((clue) => {
     const clueCell = document.createElement('div');
     clueCell.classList.add('top-clue-cell');
@@ -151,6 +153,7 @@ function createTopClues (colClues) {
 }
 
 function createLeftClues (rowClues) {
+  leftClues.innerHTML = '';
   leftClues.innerHTML = '';
   rowClues.forEach((clue) => {
     const clueCell = document.createElement('div');
@@ -168,6 +171,7 @@ function markedCell (cell) {
     cell.classList.add('active');
     cell.classList.remove('empty');
   }
+  checkPattern();
 }
 
 function crossedCell (cell) {
@@ -178,6 +182,25 @@ function crossedCell (cell) {
     cell.classList.add('cross');
     cell.classList.remove('empty', 'active');
   }
+  checkPattern();
+}
+
+function checkPattern () {
+  const solution = patterns[patternSelector.value];
+
+  for (let row = 0; row < solution.length; row++) {
+    for (let col = 0; col < solution[row].length; col++) {
+      const cell = gameField.querySelector(
+        `.cell[data-row="${row}"][data-col="${col}"]`,
+      );
+      const isActive = cell.classList.contains('active');
+
+      if ((solution[row][col] === 1 && !isActive) || (solution[row][col] === 0 && isActive)) {
+        return;
+      }
+    }
+  }
+  alert('Great! You have solved the nonogram!');
 }
 
 function updateGame (patternName) {
