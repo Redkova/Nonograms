@@ -24,10 +24,14 @@ gameField.classList.add('game-field');
 
 gameSection.append(topClues, leftClues, gameField);
 
+const patternSelector = document.createElement('select');
+patternSelector.classList.add('pattern-selector');
+
 main.append(
   header,
   title,
   gameSection,
+  patternSelector,
 );
 
 bodyElement.append(main);
@@ -69,6 +73,13 @@ const patterns = {
     [0, 1, 1, 1, 0],
   ],
 };
+
+Object.keys(patterns).forEach((patternName) => {
+  const option = document.createElement('option');
+  option.value = patternName;
+  option.textContent = patternName;
+  patternSelector.appendChild(option);
+});
 
 function createGameField (pattern) {
   for (let row = 0; row < pattern.length; row++) {
@@ -168,7 +179,18 @@ function crossedCell (cell) {
     cell.classList.remove('empty', 'active');
   }
 }
-createGameField(pattern);
-createTopClues(colClues);
-createLeftClues(rowClues);
-generateClues(pattern);
+
+function updateGame (patternName) {
+  const pattern = patterns[patternName];
+  const { rowClues, colClues } = generateClues(pattern);
+
+  createGameField(pattern);
+  createTopClues(colClues);
+  createLeftClues(rowClues);
+}
+
+patternSelector.addEventListener('change', (e) => {
+  updateGame(e.target.value);
+});
+
+updateGame('heart');
