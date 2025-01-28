@@ -27,11 +27,20 @@ gameSection.append(topClues, leftClues, gameField);
 const patternSelector = document.createElement('select');
 patternSelector.classList.add('pattern-selector');
 
+const gameControl = document.createElement('div');
+gameControl.classList.add('buttons-section');
+
+const resetButton = document.createElement('button');
+resetButton.textContent = 'Reset Game';
+resetButton.classList.add('reset-button');
+
+gameControl.append(resetButton, patternSelector);
+
 main.append(
   header,
   title,
   gameSection,
-  patternSelector,
+  gameControl,
 );
 
 bodyElement.append(main);
@@ -258,3 +267,12 @@ patternSelector.addEventListener('change', (e) => {
 });
 
 updateGame('heart');
+
+resetButton.addEventListener('click', () => {
+  resetGame();
+});
+
+function resetGame () {
+  const currentPattern = patterns[patternSelector.value];
+  createGameField(currentPattern);
+}
