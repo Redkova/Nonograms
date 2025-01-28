@@ -38,7 +38,11 @@ const saveButton = document.createElement('button');
 saveButton.textContent = 'Save Game';
 saveButton.classList.add('button');
 
-gameControl.append(patternSelector, resetButton, saveButton);
+const continueButton = document.createElement('button');
+continueButton.textContent = 'Continue Last Game';
+continueButton.classList.add('button');
+
+gameControl.append(patternSelector, resetButton, saveButton, continueButton);
 
 main.append(
   header,
@@ -302,4 +306,33 @@ function saveGame () {
   };
 
   localStorage.setItem('nonogramGame', JSON.stringify(savedData));
+}
+
+continueButton.addEventListener('click', () => {
+  continueGame();
+});
+
+function continueGame () {
+  const savedData = localStorage.getItem('nonogramGame');
+
+  if (!savedData) {
+    return;
+  }
+
+  const { patternName, gameState } = JSON.parse(savedData);
+
+  updateGame(patternName);
+
+  gameState.forEach(({
+    row, col, active, cross,
+  }) => {
+    const cell = gameField.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
+
+    if (active) {
+      cell.classList.add('active');
+    }
+    if (cross) {
+      cell.classList.add('cross');
+    }
+  });
 }
