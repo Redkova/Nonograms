@@ -14,6 +14,23 @@ const gameTimer = document.createElement('div');
 gameTimer.textContent = '00:00';
 gameTimer.classList.add('timer');
 
+const levels = document.createElement('div');
+levels.classList.add('levels');
+
+const easyButton = document.createElement('button');
+easyButton.textContent = 'Easy';
+easyButton.classList.add('button');
+
+const mediumButton = document.createElement('button');
+mediumButton.textContent = 'Medium';
+mediumButton.classList.add('button');
+
+const hardButton = document.createElement('button');
+hardButton.textContent = 'Hard';
+hardButton.classList.add('button');
+
+levels.append(easyButton, mediumButton, hardButton);
+
 const gameSection = document.createElement('div');
 gameSection.classList.add('game-section');
 
@@ -69,6 +86,7 @@ main.append(
   header,
   title,
   gameTimer,
+  levels,
   gameSection,
   gameControl,
   popupOverlay,
@@ -266,12 +284,22 @@ const patterns = {
 
 };
 
-Object.keys(patterns).forEach((patternName) => {
-  const option = document.createElement('option');
-  option.value = patternName;
-  option.textContent = patternName;
-  patternSelector.appendChild(option);
-});
+function updatePatternSelector (difficulty) {
+  patternSelector.innerHTML = '';
+
+  Object.keys(patterns[difficulty]).forEach((patternName) => {
+    const option = document.createElement('option');
+    option.value = patternName;
+    option.textContent = patternName.charAt(0).toUpperCase() + patternName.slice(1);
+    patternSelector.appendChild(option);
+  });
+}
+
+easyButton.addEventListener('click', () => updatePatternSelector('easy'));
+mediumButton.addEventListener('click', () => updatePatternSelector('medium'));
+hardButton.addEventListener('click', () => updatePatternSelector('hard'));
+
+updatePatternSelector('easy');
 
 function createGameField (pattern) {
   gameField.innerHTML = '';

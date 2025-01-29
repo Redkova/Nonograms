@@ -41,6 +41,11 @@ html {
     margin-bottom: 15px;
   }
 
+.levels {
+  display: flex;
+  gap: 15px;
+}
+
 .game-section {
   display: grid;
   grid-template-columns: auto 1fr;
