@@ -48,12 +48,30 @@ continueButton.classList.add('button');
 
 gameControl.append(patternSelector, resetButton, saveButton, continueButton);
 
+const popupOverlay = document.createElement('div');
+popupOverlay.classList.add('popup-overlay');
+popupOverlay.style.display = 'none';
+
+const popupWindow = document.createElement('div');
+popupWindow.classList.add('popup-window');
+
+const popupClose = document.createElement('span');
+popupClose.innerHTML = '&times;';
+popupClose.classList.add('popup-close');
+
+const popupMessage = document.createElement('p');
+popupMessage.classList.add('popup-message');
+
+popupWindow.append(popupMessage, popupClose);
+popupOverlay.append(popupWindow);
+
 main.append(
   header,
   title,
   gameTimer,
   gameSection,
   gameControl,
+  popupOverlay,
 );
 
 bodyElement.append(main);
@@ -304,10 +322,7 @@ function checkPattern () {
     }
   }
   stopTimer();
-  const totalTime = `${Math.floor(timeCounter / 60)}:${(timeCounter % 60)
-    .toString()
-    .padStart(2, '0')}`;
-  alert(`Great! You have solved the nonogram in ${timeCounter} seconds! (${totalTime})`);
+  showPopupMessage(`Great! You have solved the nonogram in ${timeCounter} seconds!`);
 }
 
 function updateGame (patternName) {
@@ -391,4 +406,16 @@ function continueGame () {
   timeCounter = savedTimeCounter;
   updateTimerDisplay();
   startTimer();
+}
+
+function showPopupMessage (message) {
+  popupOverlay.style.display = 'flex';
+  popupMessage.textContent = message;
+  main.classList.add('inactive');
+  popupClose.addEventListener('click', closePopup);
+}
+
+function closePopup () {
+  popupOverlay.style.display = 'none';
+  main.classList.remove('inactive');
 }
