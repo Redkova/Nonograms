@@ -34,6 +34,13 @@ html {
     color: #212121;
   }
 
+  .timer {
+    font-size: 24px;
+    font-weight: bold;
+    color: #212121;;
+    margin-bottom: 15px;
+  }
+
 .game-section {
   display: grid;
   grid-template-columns: auto 1fr;

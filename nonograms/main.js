@@ -10,6 +10,10 @@ const title = document.createElement('h1');
 title.textContent = 'NONOGRAMS';
 title.classList.add('title');
 
+const gameTimer = document.createElement('div');
+gameTimer.textContent = '00:00';
+gameTimer.classList.add('timer');
+
 const gameSection = document.createElement('div');
 gameSection.classList.add('game-section');
 
@@ -47,6 +51,7 @@ gameControl.append(patternSelector, resetButton, saveButton, continueButton);
 main.append(
   header,
   title,
+  gameTimer,
   gameSection,
   gameControl,
 );
@@ -221,7 +226,45 @@ function createLeftClues (rowClues) {
   leftClues.appendChild(table);
 }
 
+let timer = null;
+let timeCounter = 0;
+
+function startTimer () {
+  if (timer) return;
+
+  timer = setInterval(() => {
+    timeCounter++;
+    const minutes = Math.floor(timeCounter / 60).toString().padStart(2, '0');
+    const seconds = (timeCounter % 60).toString().padStart(2, '0');
+    gameTimer.textContent = `${minutes}:${seconds}`;
+  }, 1000);
+}
+
+function stopTimer () {
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
+  }
+}
+
+function resetTimer () {
+  stopTimer();
+  timeCounter = 0;
+  gameTimer.textContent = '00:00';
+}
+
+function updateTimerDisplay () {
+  const minutes = Math.floor(timeCounter / 60);
+  const seconds = timeCounter % 60;
+
+  gameTimer.textContent = `${minutes.toString().padStart(2, '0')}:${seconds
+    .toString()
+    .padStart(2, '0')}`;
+}
+
 function markedCell (cell) {
+  if (!timer) startTimer();
+
   if (cell.classList.contains('active')) {
     cell.classList.remove('active');
     cell.classList.add('empty');
@@ -233,6 +276,8 @@ function markedCell (cell) {
 }
 
 function crossedCell (cell) {
+  if (!timer) startTimer();
+
   if (cell.classList.contains('cross')) {
     cell.classList.remove('cross');
     cell.classList.add('empty');
@@ -258,7 +303,11 @@ function checkPattern () {
       }
     }
   }
-  alert('Great! You have solved the nonogram!');
+  stopTimer();
+  const totalTime = `${Math.floor(timeCounter / 60)}:${(timeCounter % 60)
+    .toString()
+    .padStart(2, '0')}`;
+  alert(`Great! You have solved the nonogram in ${timeCounter} seconds! (${totalTime})`);
 }
 
 function updateGame (patternName) {
@@ -271,12 +320,15 @@ function updateGame (patternName) {
 }
 
 patternSelector.addEventListener('change', (e) => {
+  stopTimer();
+  resetTimer();
   updateGame(e.target.value);
 });
 
 updateGame('heart');
 
 resetButton.addEventListener('click', () => {
+  resetTimer();
   resetGame();
 });
 
@@ -303,6 +355,7 @@ function saveGame () {
   const savedData = {
     patternName: currentPattern,
     gameState,
+    timeCounter,
   };
 
   localStorage.setItem('nonogramGame', JSON.stringify(savedData));
@@ -319,7 +372,7 @@ function continueGame () {
     return;
   }
 
-  const { patternName, gameState } = JSON.parse(savedData);
+  const { patternName, gameState, timeCounter: savedTimeCounter } = JSON.parse(savedData);
 
   updateGame(patternName);
 
@@ -335,4 +388,7 @@ function continueGame () {
       cell.classList.add('cross');
     }
   });
+  timeCounter = savedTimeCounter;
+  updateTimerDisplay();
+  startTimer();
 }
