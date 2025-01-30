@@ -29,7 +29,11 @@ const hardButton = document.createElement('button');
 hardButton.textContent = 'Hard';
 hardButton.classList.add('button');
 
-levels.append(easyButton, mediumButton, hardButton);
+const randomButton = document.createElement('button');
+randomButton.textContent = 'Random Game';
+randomButton.classList.add('button');
+
+levels.append(easyButton, mediumButton, hardButton, randomButton);
 
 const gameSection = document.createElement('div');
 gameSection.classList.add('game-section');
@@ -554,6 +558,34 @@ function updateGame (selectedPattern) {
   createGameField(pattern);
   createTopClues(colClues);
   createLeftClues(rowClues);
+}
+
+randomButton.addEventListener('click', () => {
+  startRandomGame();
+  stopTimer();
+  resetTimer();
+});
+
+function startRandomGame () {
+  const randomLevels = ['easy', 'medium', 'hard'];
+  const randomLevel = randomLevels[Math.floor(Math.random() * randomLevels.length)];
+  const randomPatternName = Object.keys(patterns[randomLevel])[Math.floor(Math.random()
+    * Object.keys(patterns[randomLevel]).length)];
+
+  const selectedPattern = `${randomLevel}:${randomPatternName}`;
+  const patternNameOnly = randomPatternName.charAt(0).toUpperCase()
+  + randomPatternName.slice(1).toLowerCase();
+
+  if (patternSelector) {
+    if (!Array.from(patternSelector.options).some((option) => option.value === randomPatternName)) {
+      const newOption = document.createElement('option');
+      newOption.value = randomPatternName;
+      newOption.textContent = patternNameOnly;
+      patternSelector.appendChild(newOption);
+    }
+    patternSelector.value = randomPatternName;
+  }
+  updateGame(selectedPattern);
 }
 
 patternSelector.addEventListener('change', (e) => {
