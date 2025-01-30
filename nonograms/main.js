@@ -545,17 +545,13 @@ patternSelector.addEventListener('change', (e) => {
   updateGame(e.target.value);
 });
 
-updateGame('heart');
-
 resetButton.addEventListener('click', () => {
+  stopTimer();
   resetTimer();
-  resetGame();
+  startGame();
 });
 
-function resetGame () {
-  const currentPattern = patterns[patternSelector.value];
-  createGameField(currentPattern);
-}
+updateGame('heart');
 
 saveButton.addEventListener('click', () => {
   saveGame();
