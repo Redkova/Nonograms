@@ -67,7 +67,11 @@ const continueButton = document.createElement('button');
 continueButton.textContent = 'Continue Last Game';
 continueButton.classList.add('button');
 
-gameControl.append(patternSelector, resetButton, saveButton, continueButton);
+const showSolution = document.createElement('button');
+showSolution.textContent = 'Show solution';
+showSolution.classList.add('button');
+
+gameControl.append(patternSelector, resetButton, saveButton, continueButton, showSolution);
 
 const popupOverlay = document.createElement('div');
 popupOverlay.classList.add('popup-overlay');
