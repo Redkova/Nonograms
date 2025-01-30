@@ -388,7 +388,6 @@ function generateClues (pattern) {
 
     colClues.push(clues);
   }
-
   return { rowClues, colClues };
 }
 
@@ -411,7 +410,6 @@ function createTopClues (colClues) {
     });
     table.appendChild(tr);
   }
-
   topClues.appendChild(table);
 }
 
@@ -443,7 +441,6 @@ function createLeftClues (rowClues) {
 
     table.appendChild(tr);
   });
-
   leftClues.appendChild(table);
 }
 
@@ -467,35 +464,6 @@ hardButton.addEventListener('click', () => {
   resetTimer();
   startGame();
 });
-
-randomButton.addEventListener('click', () => {
-  startRandomGame();
-  stopTimer();
-  resetTimer();
-});
-
-function startRandomGame () {
-  resetGame();
-  const randomLevels = ['easy', 'medium', 'hard'];
-  const randomLevel = randomLevels[Math.floor(Math.random() * randomLevels.length)];
-  const randomPatternName = Object.keys(patterns[randomLevel])[Math.floor(Math.random()
-    * Object.keys(patterns[randomLevel]).length)];
-
-  const selectedPattern = `${randomLevel}:${randomPatternName}`;
-  const patternNameOnly = randomPatternName.charAt(0).toUpperCase()
-  + randomPatternName.slice(1).toLowerCase();
-
-  if (patternSelector) {
-    if (!Array.from(patternSelector.options).some((option) => option.value === randomPatternName)) {
-      const newOption = document.createElement('option');
-      newOption.value = randomPatternName;
-      newOption.textContent = patternNameOnly;
-      patternSelector.appendChild(newOption);
-    }
-    patternSelector.value = randomPatternName;
-  }
-  updateGame(selectedPattern);
-}
 
 let timer = null;
 let timeCounter = 0;
@@ -559,15 +527,26 @@ function crossedCell (cell) {
   checkPattern();
 }
 
+let currentLevel = null;
+let currentPatternName = null;
+
 function checkPattern () {
-  const [difficulty, patternName] = patternSelector.value.split(':');
-  const solution = patterns[difficulty][patternName];
+  const difficulty = currentLevel || (patternSelector.value ? patternSelector.value.split(':')[0] : null);
+  const patternName = currentPatternName || (patternSelector.value ? patternSelector.value.split(':')[1] : null);
+
+  if (!difficulty || !patternName) {
+    return;
+  }
+
+  const solution = patterns[difficulty] && patterns[difficulty][patternName];
+
+  if (!solution) {
+    return;
+  }
 
   for (let row = 0; row < solution.length; row++) {
     for (let col = 0; col < solution[row].length; col++) {
-      const cell = gameField.querySelector(
-        `.cell[data-row="${row}"][data-col="${col}"]`,
-      );
+      const cell = gameField.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
       const isActive = cell.classList.contains('active');
 
       if ((solution[row][col] === 1 && !isActive) || (solution[row][col] === 0 && isActive)) {
@@ -576,7 +555,38 @@ function checkPattern () {
     }
   }
   stopTimer();
+
   showPopupMessage(`Great! You have solved the nonogram in ${timeCounter} seconds!`);
+}
+
+randomButton.addEventListener('click', () => {
+  startRandomGame();
+  stopTimer();
+  resetTimer();
+});
+
+function startRandomGame () {
+  resetGame();
+
+  const randomLevels = ['easy', 'medium', 'hard'];
+  currentLevel = randomLevels[Math.floor(Math.random() * randomLevels.length)];
+  currentPatternName = Object.keys(patterns[currentLevel])[Math.floor(Math.random()
+    * Object.keys(patterns[currentLevel]).length)];
+
+  const selectedPattern = `${currentLevel}:${currentPatternName}`;
+  const patternNameOnly = currentPatternName.charAt(0).toUpperCase()
+  + currentPatternName.slice(1).toLowerCase();
+
+  if (patternSelector) {
+    if (!Array.from(patternSelector.options).some((option) => option.value === selectedPattern)) {
+      const newOption = document.createElement('option');
+      newOption.value = selectedPattern;
+      newOption.textContent = patternNameOnly;
+      patternSelector.appendChild(newOption);
+    }
+    patternSelector.value = selectedPattern;
+  }
+  updateGame(selectedPattern);
 }
 
 function updateGame (selectedPattern) {
