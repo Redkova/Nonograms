@@ -468,6 +468,35 @@ hardButton.addEventListener('click', () => {
   startGame();
 });
 
+randomButton.addEventListener('click', () => {
+  startRandomGame();
+  stopTimer();
+  resetTimer();
+});
+
+function startRandomGame () {
+  resetGame();
+  const randomLevels = ['easy', 'medium', 'hard'];
+  const randomLevel = randomLevels[Math.floor(Math.random() * randomLevels.length)];
+  const randomPatternName = Object.keys(patterns[randomLevel])[Math.floor(Math.random()
+    * Object.keys(patterns[randomLevel]).length)];
+
+  const selectedPattern = `${randomLevel}:${randomPatternName}`;
+  const patternNameOnly = randomPatternName.charAt(0).toUpperCase()
+  + randomPatternName.slice(1).toLowerCase();
+
+  if (patternSelector) {
+    if (!Array.from(patternSelector.options).some((option) => option.value === randomPatternName)) {
+      const newOption = document.createElement('option');
+      newOption.value = randomPatternName;
+      newOption.textContent = patternNameOnly;
+      patternSelector.appendChild(newOption);
+    }
+    patternSelector.value = randomPatternName;
+  }
+  updateGame(selectedPattern);
+}
+
 let timer = null;
 let timeCounter = 0;
 
@@ -560,45 +589,23 @@ function updateGame (selectedPattern) {
   createLeftClues(rowClues);
 }
 
-randomButton.addEventListener('click', () => {
-  startRandomGame();
-  stopTimer();
-  resetTimer();
-});
-
-function startRandomGame () {
-  const randomLevels = ['easy', 'medium', 'hard'];
-  const randomLevel = randomLevels[Math.floor(Math.random() * randomLevels.length)];
-  const randomPatternName = Object.keys(patterns[randomLevel])[Math.floor(Math.random()
-    * Object.keys(patterns[randomLevel]).length)];
-
-  const selectedPattern = `${randomLevel}:${randomPatternName}`;
-  const patternNameOnly = randomPatternName.charAt(0).toUpperCase()
-  + randomPatternName.slice(1).toLowerCase();
-
-  if (patternSelector) {
-    if (!Array.from(patternSelector.options).some((option) => option.value === randomPatternName)) {
-      const newOption = document.createElement('option');
-      newOption.value = randomPatternName;
-      newOption.textContent = patternNameOnly;
-      patternSelector.appendChild(newOption);
-    }
-    patternSelector.value = randomPatternName;
-  }
-  updateGame(selectedPattern);
-}
-
 patternSelector.addEventListener('change', (e) => {
   stopTimer();
   resetTimer();
   updateGame(e.target.value);
 });
 
-resetButton.addEventListener('click', () => {
+resetButton.addEventListener('click', resetGame);
+
+function resetGame () {
   stopTimer();
   resetTimer();
-  startGame();
-});
+
+  const cells = Array.from(gameField.querySelectorAll('.cell'));
+  cells.forEach((cell) => {
+    cell.classList.remove('active', 'cross');
+  });
+}
 
 saveButton.addEventListener('click', () => {
   saveGame();
