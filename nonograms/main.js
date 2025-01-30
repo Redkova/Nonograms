@@ -284,10 +284,6 @@ const patterns = {
 
 };
 
-easyButton.addEventListener('click', () => updatePatternSelector('easy'));
-mediumButton.addEventListener('click', () => updatePatternSelector('medium'));
-hardButton.addEventListener('click', () => updatePatternSelector('hard'));
-
 patternSelector.addEventListener('change', startGame);
 
 function updatePatternSelector (difficulty) {
@@ -447,6 +443,27 @@ function createLeftClues (rowClues) {
   leftClues.appendChild(table);
 }
 
+easyButton.addEventListener('click', () => {
+  updatePatternSelector('easy');
+  stopTimer();
+  resetTimer();
+  startGame();
+});
+
+mediumButton.addEventListener('click', () => {
+  updatePatternSelector('medium');
+  stopTimer();
+  resetTimer();
+  startGame();
+});
+
+hardButton.addEventListener('click', () => {
+  updatePatternSelector('hard');
+  stopTimer();
+  resetTimer();
+  startGame();
+});
+
 let timer = null;
 let timeCounter = 0;
 
@@ -551,8 +568,6 @@ resetButton.addEventListener('click', () => {
   startGame();
 });
 
-updateGame('heart');
-
 saveButton.addEventListener('click', () => {
   saveGame();
 });
@@ -620,3 +635,5 @@ function closePopup () {
   popupOverlay.style.display = 'none';
   main.classList.remove('inactive');
 }
+
+updateGame('heart');
