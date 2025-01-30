@@ -284,22 +284,45 @@ const patterns = {
 
 };
 
+easyButton.addEventListener('click', () => updatePatternSelector('easy'));
+mediumButton.addEventListener('click', () => updatePatternSelector('medium'));
+hardButton.addEventListener('click', () => updatePatternSelector('hard'));
+
+patternSelector.addEventListener('change', startGame);
+
 function updatePatternSelector (difficulty) {
   patternSelector.innerHTML = '';
 
   Object.keys(patterns[difficulty]).forEach((patternName) => {
     const option = document.createElement('option');
-    option.value = patternName;
+    option.value = `${difficulty}:${patternName}`;
     option.textContent = patternName.charAt(0).toUpperCase() + patternName.slice(1);
     patternSelector.appendChild(option);
   });
+  patternSelector.value = `${difficulty}:${Object.keys(patterns[difficulty])[0]}`;
+  startGame();
 }
-
-easyButton.addEventListener('click', () => updatePatternSelector('easy'));
-mediumButton.addEventListener('click', () => updatePatternSelector('medium'));
-hardButton.addEventListener('click', () => updatePatternSelector('hard'));
-
 updatePatternSelector('easy');
+
+function startGame () {
+  const selectedValue = patternSelector.value;
+
+  if (!selectedValue) {
+    return;
+  }
+
+  const [difficulty, patternName] = selectedValue.split(':');
+
+  if (!(patterns[difficulty] && patterns[difficulty][patternName])) {
+    return;
+  }
+  const selectedPattern = patterns[difficulty][patternName];
+
+  createGameField(selectedPattern);
+  const { rowClues, colClues } = generateClues(selectedPattern);
+  createTopClues(colClues);
+  createLeftClues(rowClues);
+}
 
 function createGameField (pattern) {
   gameField.innerHTML = '';
