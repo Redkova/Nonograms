@@ -181,7 +181,7 @@ const patterns = {
       [0, 0, 0, 0, 1, 1, 1, 1, 0, 1],
       [0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
     ],
-    mashroom: [
+    mushroom: [
       [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
       [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
       [0, 1, 0, 0, 0, 0, 1, 1, 1, 0],
@@ -603,7 +603,21 @@ function continueGame () {
     return;
   }
 
-  const { patternName, gameState, timeCounter: savedTimeCounter } = JSON.parse(savedData);
+  const {
+    patternName, gameState, timeCounter: savedTimeCounter,
+  } = JSON.parse(savedData);
+
+  const patternNameOnly = patternName.split(':').pop().trim();
+
+  if (!Array.from(patternSelector.options).some((option) => option.value === patternName)) {
+    const newOption = document.createElement('option');
+    newOption.value = patternNameOnly;
+    newOption.textContent = patternNameOnly.charAt(0).toUpperCase()
+    + patternNameOnly.slice(1).toLowerCase();
+    patternSelector.appendChild(newOption);
+  }
+
+  patternSelector.value = patternNameOnly;
 
   updateGame(patternName);
 
