@@ -510,7 +510,8 @@ function crossedCell (cell) {
 }
 
 function checkPattern () {
-  const solution = patterns[patternSelector.value];
+  const [difficulty, patternName] = patternSelector.value.split(':');
+  const solution = patterns[difficulty][patternName];
 
   for (let row = 0; row < solution.length; row++) {
     for (let col = 0; col < solution[row].length; col++) {
@@ -528,8 +529,9 @@ function checkPattern () {
   showPopupMessage(`Great! You have solved the nonogram in ${timeCounter} seconds!`);
 }
 
-function updateGame (patternName) {
-  const pattern = patterns[patternName];
+function updateGame (selectedPattern) {
+  const [difficulty, patternName] = selectedPattern.split(':');
+  const pattern = patterns[difficulty][patternName];
   const { rowClues, colClues } = generateClues(pattern);
 
   createGameField(pattern);
