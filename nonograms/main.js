@@ -85,11 +85,11 @@ const solutionButton = document.createElement('button');
 solutionButton.textContent = 'Solution';
 solutionButton.classList.add('button');
 
-const lastWins = document.createElement('button');
-lastWins.textContent = 'Last wins';
-lastWins.classList.add('button');
+const lastWinsButton = document.createElement('button');
+lastWinsButton.textContent = 'Last wins';
+lastWinsButton.classList.add('button');
 
-gameControl.append(resetButton, saveButton, continueButton, solutionButton, lastWins);
+gameControl.append(resetButton, saveButton, continueButton, solutionButton, lastWinsButton);
 
 const popupOverlay = document.createElement('div');
 popupOverlay.classList.add('popup-overlay');
@@ -108,25 +108,25 @@ popupMessage.classList.add('popup-message');
 popupWindow.append(popupMessage, popupClose);
 popupOverlay.append(popupWindow);
 
-const modal = document.createElement('div');
-modal.classList.add('modal');
+const lastWinsModal = document.createElement('div');
+lastWinsModal.classList.add('modal');
 
-const modalContent = document.createElement('div');
-modalContent.classList.add('modal-content');
+const lastWinsModalContent = document.createElement('div');
+lastWinsModalContent.classList.add('modal-content');
 
-const modalClose = document.createElement('span');
-modalClose.innerHTML = '&times;';
-modalClose.classList.add('modal-close');
+const lastWinsModalClose = document.createElement('span');
+lastWinsModalClose.innerHTML = '&times;';
+lastWinsModalClose.classList.add('modal-close');
 
-const modalHeading = document.createElement('h4');
-modalHeading.textContent = 'High Scores:';
-modalHeading.classList.add('modal-heading');
+const lastWinsModalHeading = document.createElement('h4');
+lastWinsModalHeading.textContent = 'High Scores:';
+lastWinsModalHeading.classList.add('modal-heading');
 
-const modalList = document.createElement('ul');
-modalList.classList.add('modal-list');
+const lastWinsModalList = document.createElement('ol');
+lastWinsModalList.classList.add('modal-list');
 
-modal.appendChild(modalContent);
-modalContent.append(modalClose, modalHeading, modalList);
+lastWinsModal.appendChild(lastWinsModalContent);
+lastWinsModalContent.append(lastWinsModalClose, lastWinsModalHeading, lastWinsModalList);
 
 main.append(
   header,
@@ -136,7 +136,7 @@ main.append(
   gameMain,
   gameControl,
   popupOverlay,
-  modal,
+  lastWinsModal,
 );
 
 bodyElement.append(main);
@@ -598,8 +598,8 @@ function checkPattern () {
     }
   }
   stopTimer();
-
   showPopupMessage(`Great! You have solved the nonogram in ${timeCounter} seconds!`);
+  saveLastWins(patternName, difficulty, timeCounter);
 }
 
 randomButton.addEventListener('click', () => {
@@ -767,4 +767,41 @@ function showSolution () {
       }
     }
   }
+}
+
+function saveLastWins (patternName, difficulty, time) {
+  let lastWins = JSON.parse(localStorage.getItem('lastWins')) || [];
+
+  lastWins.push({ patternName, difficulty, time });
+
+  lastWins.sort((a, b) => a.time - b.time);
+
+  lastWins = lastWins.slice(0, 5);
+
+  localStorage.setItem('lastWins', JSON.stringify(lastWins));
+}
+
+lastWinsButton.addEventListener('click', () => {
+  showLastWinsModal();
+});
+
+function showLastWinsModal () {
+  lastWinsModal.style.display = 'flex';
+  const highScores = JSON.parse(localStorage.getItem('lastWins')) || [];
+
+  lastWinsModalList.innerHTML = '';
+
+  highScores.forEach(({ patternName, difficulty, time }) => {
+    const li = document.createElement('li');
+    li.innerHTML = `${patternName} - ${difficulty} - <span>${time}</span>`;
+    lastWinsModalList.appendChild(li);
+  });
+
+  lastWinsModalClose.addEventListener('click', () => {
+    closeLastWinsModal();
+  });
+}
+
+function closeLastWinsModal () {
+  lastWinsModal.style.display = 'none';
 }
