@@ -38,6 +38,11 @@ levels.append(easyButton, mediumButton, hardButton, randomButton);
 const gameMain = document.createElement('div');
 gameMain.classList.add('game-main');
 
+const emptyColumn = document.createElement('div');
+
+const gameControl = document.createElement('div');
+gameControl.classList.add('game-control');
+
 const patternSelectorSection = document.createElement('div');
 patternSelectorSection.classList.add('pattern-section');
 
@@ -49,6 +54,38 @@ const patternSelector = document.createElement('select');
 patternSelector.classList.add('pattern-selector');
 
 patternSelectorSection.append(patSelectorText, patternSelector);
+
+const resetButton = document.createElement('button');
+resetButton.textContent = 'Reset Game';
+resetButton.classList.add('game-control-button');
+
+const saveButton = document.createElement('button');
+saveButton.textContent = 'Save Game';
+saveButton.classList.add('game-control-button');
+
+const continueButton = document.createElement('button');
+continueButton.textContent = 'Continue Last Game';
+continueButton.classList.add('game-control-button');
+
+const solutionButton = document.createElement('button');
+solutionButton.textContent = 'Solution';
+solutionButton.classList.add('game-control-button');
+
+const lastWinsButton = document.createElement('button');
+lastWinsButton.textContent = 'Last wins';
+lastWinsButton.classList.add('game-control-button');
+
+gameControl.append(
+  patternSelectorSection,
+  resetButton,
+  saveButton,
+  continueButton,
+  solutionButton,
+  lastWinsButton,
+);
+
+const fieldSection = document.createElement('div');
+fieldSection.classList.add('field-section');
 
 const gameSection = document.createElement('div');
 gameSection.classList.add('game-section');
@@ -64,32 +101,9 @@ gameField.classList.add('game-field');
 
 gameSection.append(topClues, leftClues, gameField);
 
-gameMain.append(patternSelectorSection, gameSection);
+fieldSection.appendChild(gameSection);
 
-const gameControl = document.createElement('div');
-gameControl.classList.add('game-control');
-
-const resetButton = document.createElement('button');
-resetButton.textContent = 'Reset Game';
-resetButton.classList.add('button');
-
-const saveButton = document.createElement('button');
-saveButton.textContent = 'Save Game';
-saveButton.classList.add('button');
-
-const continueButton = document.createElement('button');
-continueButton.textContent = 'Continue Last Game';
-continueButton.classList.add('button');
-
-const solutionButton = document.createElement('button');
-solutionButton.textContent = 'Solution';
-solutionButton.classList.add('button');
-
-const lastWinsButton = document.createElement('button');
-lastWinsButton.textContent = 'Last wins';
-lastWinsButton.classList.add('button');
-
-gameControl.append(resetButton, saveButton, continueButton, solutionButton, lastWinsButton);
+gameMain.append(emptyColumn, fieldSection, gameControl);
 
 const popupOverlay = document.createElement('div');
 popupOverlay.classList.add('popup-overlay');
@@ -134,7 +148,6 @@ main.append(
   gameTimer,
   levels,
   gameMain,
-  gameControl,
   popupOverlay,
   lastWinsModal,
 );
