@@ -13,6 +13,10 @@ body {
   max-width: 1440px;
   height: 100vh;
   margin: 0 auto;
+  background-image:url('../assets/nanogram_background2-2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .main {
