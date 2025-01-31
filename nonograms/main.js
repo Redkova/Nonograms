@@ -331,6 +331,14 @@ const patterns = {
 
 };
 
+function capitalizePatternName (patternName) {
+  return patternName.charAt(0).toUpperCase() + patternName.slice(1);
+}
+
+function capitalizeDifficulty (difficulty) {
+  return difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
+}
+
 patternSelector.addEventListener('change', startGame);
 
 function updatePatternSelector (difficulty) {
@@ -339,7 +347,7 @@ function updatePatternSelector (difficulty) {
   Object.keys(patterns[difficulty]).forEach((patternName) => {
     const option = document.createElement('option');
     option.value = `${difficulty}:${patternName}`;
-    option.textContent = patternName.charAt(0).toUpperCase() + patternName.slice(1);
+    option.textContent = capitalizePatternName(patternName);
     patternSelector.appendChild(option);
   });
   patternSelector.value = `${difficulty}:${Object.keys(patterns[difficulty])[0]}`;
@@ -781,6 +789,16 @@ function saveLastWins (patternName, difficulty, time) {
   localStorage.setItem('lastWins', JSON.stringify(lastWins));
 }
 
+function formatTime (time) {
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+
+  const formattedMinutes = minutes.toString().padStart(2, '0');
+  const formattedSeconds = seconds.toString().padStart(2, '0');
+
+  return `${formattedMinutes}:${formattedSeconds}`;
+}
+
 lastWinsButton.addEventListener('click', () => {
   showLastWinsModal();
 });
@@ -793,7 +811,7 @@ function showLastWinsModal () {
 
   highScores.forEach(({ patternName, difficulty, time }) => {
     const li = document.createElement('li');
-    li.innerHTML = `<span>&#9998; ${patternName}</span><span>${difficulty}</span><span>${time}</span>`;
+    li.innerHTML = `<span>&#9998;  ${capitalizePatternName(patternName)}</span><span>${capitalizeDifficulty(difficulty)}</span><span>${formatTime(time)}</span>`;
     lastWinsModalList.appendChild(li);
   });
 
