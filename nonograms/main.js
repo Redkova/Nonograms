@@ -108,6 +108,26 @@ popupMessage.classList.add('popup-message');
 popupWindow.append(popupMessage, popupClose);
 popupOverlay.append(popupWindow);
 
+const modal = document.createElement('div');
+modal.classList.add('modal');
+
+const modalContent = document.createElement('div');
+modalContent.classList.add('modal-content');
+
+const modalClose = document.createElement('span');
+modalClose.innerHTML = '&times;';
+modalClose.classList.add('modal-close');
+
+const modalHeading = document.createElement('h4');
+modalHeading.textContent = 'High Scores:';
+modalHeading.classList.add('modal-heading');
+
+const modalList = document.createElement('ul');
+modalList.classList.add('modal-list');
+
+modal.appendChild(modalContent);
+modalContent.append(modalClose, modalHeading, modalList);
+
 main.append(
   header,
   title,
@@ -116,6 +136,7 @@ main.append(
   gameMain,
   gameControl,
   popupOverlay,
+  modal,
 );
 
 bodyElement.append(main);
