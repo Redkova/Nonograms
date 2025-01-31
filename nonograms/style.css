@@ -252,9 +252,10 @@ z-index: 20;
   position: relative;
   padding: 20px;
   border-radius: 15px;
-  background-color: #cfd8dc;
-  max-width: 300px;
+  background-color: white;
+  max-width: 350px;
   text-align: center;
+  font-size: 24px;
 }
 
 .modal-close {
@@ -268,3 +269,19 @@ z-index: 20;
   border: none;
 }
 
+.modal-list {
+  padding: 10px 20px;
+}
+
+.modal-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  width: 100%;
+}
+
+.modal-list li span {
+  font-size: 20px;
+  min-width: 90px;
+  text-align: left;
+}

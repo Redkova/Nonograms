@@ -793,7 +793,7 @@ function showLastWinsModal () {
 
   highScores.forEach(({ patternName, difficulty, time }) => {
     const li = document.createElement('li');
-    li.innerHTML = `${patternName} - ${difficulty} - <span>${time}</span>`;
+    li.innerHTML = `<span>&#9998; ${patternName}</span><span>${difficulty}</span><span>${time}</span>`;
     lastWinsModalList.appendChild(li);
   });
 
