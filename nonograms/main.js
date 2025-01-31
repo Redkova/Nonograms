@@ -67,11 +67,11 @@ const continueButton = document.createElement('button');
 continueButton.textContent = 'Continue Last Game';
 continueButton.classList.add('button');
 
-const showSolution = document.createElement('button');
-showSolution.textContent = 'Show solution';
-showSolution.classList.add('button');
+const solutionButton = document.createElement('button');
+solutionButton.textContent = 'Solution';
+solutionButton.classList.add('button');
 
-gameControl.append(patternSelector, resetButton, saveButton, continueButton, showSolution);
+gameControl.append(patternSelector, resetButton, saveButton, continueButton, solutionButton);
 
 const popupOverlay = document.createElement('div');
 popupOverlay.classList.add('popup-overlay');
@@ -703,4 +703,29 @@ function closePopup () {
   main.classList.remove('inactive');
 }
 
-updateGame('heart');
+solutionButton.addEventListener('click', () => {
+  showSolution();
+  stopTimer();
+  resetTimer();
+});
+function showSolution () {
+  const [difficulty, patternName] = patternSelector.value.split(':');
+  const solution = patterns[difficulty] && patterns[difficulty][patternName];
+
+  if (!solution) {
+    return;
+  }
+  for (let row = 0; row < solution.length; row++) {
+    for (let col = 0; col < solution[row].length; col++) {
+      const cell = gameField.querySelector(
+        `.cell[data-row="${row}"][data-col="${col}"]`,
+      );
+
+      if (solution[row][col] === 1) {
+        cell.classList.add('active');
+      } else {
+        cell.classList.remove('active');
+      }
+    }
+  }
+}
