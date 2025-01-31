@@ -11,8 +11,8 @@ html {
 
 body {
   max-width: 1440px;
+  height: 100vh;
   margin: 0 auto;
-  background-color: #abe6ff;
 }
 
 .main {
@@ -32,19 +32,18 @@ body {
 
 .title {
   font-size: 50px;
-  color: #212121;
+  color: #eb278d;
+  ;
 }
 
 .timer {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
-  color: #212121;;
+  color: #72254d;;
   margin-bottom: 15px;
 }
 
 .levels {
-  width: 500px;
-  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,13 +55,18 @@ body {
 .game-main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px;
+  gap: 20px;
   justify-content: center;
   align-items: flex-start;
 }
 
+.choose-picture-section {
+  display: flex;
+  justify-content: end;
+}
+
 .field-section {
-  padding: 15px;
+  padding: 5px;
   background-color: #f7f7f7;
   border: 4px solid #212121;
 }
@@ -82,7 +86,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #ffb1fa;
+  background-color: #f7f7f7;
   border-radius: 15px;
 }
 
@@ -90,7 +94,7 @@ body {
   margin-top: 0;
   margin-bottom: 5px;
   font-size: 16px;
-  color: #212121;
+  color: #72254d;;
 }
 
 .pattern-selector {
@@ -99,7 +103,7 @@ body {
   border-radius: 5px;
   border: none;
   outline: none;
-  background-color: #007bff;
+  background-color: #eb278d;
   color: #f7f7f7;
   cursor: pointer;
   }
@@ -145,8 +149,8 @@ border: 1px solid black;
 }
 
 .game-table td {
-width: 30px;
-height: 30px;
+width: 20px;
+height: 20px;
 text-align: center;
 box-sizing: border-box;
 border: 1px solid black;
@@ -156,11 +160,12 @@ cursor: pointer;
 .clue-table {
 border-spacing: 0;
 border-collapse: collapse;
+font-size: 12px;
 }
 
 .clue-table th {
-width: 30px;
-height: 30px;
+width: 20px;
+height: 20px;
 text-align: center;
 border: 1px solid black;
 border-collapse: collapse;
@@ -205,7 +210,7 @@ font-size: 16px;
 border: 4px solid #eb278d;
 border-radius: 25px;
 background-color: #fbb7e5;
-color: #212121;
+color: #72254d;
 cursor: pointer;
 }
 

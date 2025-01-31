@@ -10,10 +10,6 @@ const title = document.createElement('h1');
 title.textContent = 'NONOGRAMS';
 title.classList.add('title');
 
-const gameTimer = document.createElement('div');
-gameTimer.textContent = '00:00';
-gameTimer.classList.add('timer');
-
 const levels = document.createElement('div');
 levels.classList.add('levels');
 
@@ -35,13 +31,15 @@ randomButton.classList.add('button');
 
 levels.append(easyButton, mediumButton, hardButton, randomButton);
 
+const gameTimer = document.createElement('div');
+gameTimer.textContent = '00:00';
+gameTimer.classList.add('timer');
+
 const gameMain = document.createElement('div');
 gameMain.classList.add('game-main');
 
-const emptyColumn = document.createElement('div');
-
-const gameControl = document.createElement('div');
-gameControl.classList.add('game-control');
+const choosePictureSection = document.createElement('div');
+choosePictureSection.classList.add('choose-picture-section');
 
 const patternSelectorSection = document.createElement('div');
 patternSelectorSection.classList.add('pattern-section');
@@ -54,6 +52,30 @@ const patternSelector = document.createElement('select');
 patternSelector.classList.add('pattern-selector');
 
 patternSelectorSection.append(patSelectorText, patternSelector);
+
+choosePictureSection.appendChild(patternSelectorSection);
+
+const fieldSection = document.createElement('div');
+fieldSection.classList.add('field-section');
+
+const gameSection = document.createElement('div');
+gameSection.classList.add('game-section');
+
+const topClues = document.createElement('div');
+topClues.classList.add('top-clues');
+
+const leftClues = document.createElement('div');
+leftClues.classList.add('left-clues');
+
+const gameField = document.createElement('div');
+gameField.classList.add('game-field');
+
+gameSection.append(topClues, leftClues, gameField);
+
+fieldSection.appendChild(gameSection);
+
+const gameControl = document.createElement('div');
+gameControl.classList.add('game-control');
 
 const resetButton = document.createElement('button');
 resetButton.textContent = 'Reset Game';
@@ -76,7 +98,6 @@ lastWinsButton.textContent = 'Last wins';
 lastWinsButton.classList.add('game-control-button');
 
 gameControl.append(
-  patternSelectorSection,
   resetButton,
   saveButton,
   continueButton,
@@ -84,26 +105,7 @@ gameControl.append(
   lastWinsButton,
 );
 
-const fieldSection = document.createElement('div');
-fieldSection.classList.add('field-section');
-
-const gameSection = document.createElement('div');
-gameSection.classList.add('game-section');
-
-const topClues = document.createElement('div');
-topClues.classList.add('top-clues');
-
-const leftClues = document.createElement('div');
-leftClues.classList.add('left-clues');
-
-const gameField = document.createElement('div');
-gameField.classList.add('game-field');
-
-gameSection.append(topClues, leftClues, gameField);
-
-fieldSection.appendChild(gameSection);
-
-gameMain.append(emptyColumn, fieldSection, gameControl);
+gameMain.append(choosePictureSection, fieldSection, gameControl);
 
 const popupOverlay = document.createElement('div');
 popupOverlay.classList.add('popup-overlay');
@@ -145,8 +147,8 @@ lastWinsModalContent.append(lastWinsModalClose, lastWinsModalHeading, lastWinsMo
 main.append(
   header,
   title,
-  gameTimer,
   levels,
+  gameTimer,
   gameMain,
   popupOverlay,
   lastWinsModal,
