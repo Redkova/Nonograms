@@ -35,6 +35,21 @@ randomButton.classList.add('button');
 
 levels.append(easyButton, mediumButton, hardButton, randomButton);
 
+const gameMain = document.createElement('div');
+gameMain.classList.add('game-main');
+
+const patternSelectorSection = document.createElement('div');
+patternSelectorSection.classList.add('pattern-section');
+
+const patSelectorText = document.createElement('h4');
+patSelectorText.textContent = 'Choose picture';
+patSelectorText.classList.add('pattern-selector-text');
+
+const patternSelector = document.createElement('select');
+patternSelector.classList.add('pattern-selector');
+
+patternSelectorSection.append(patSelectorText, patternSelector);
+
 const gameSection = document.createElement('div');
 gameSection.classList.add('game-section');
 
@@ -49,11 +64,10 @@ gameField.classList.add('game-field');
 
 gameSection.append(topClues, leftClues, gameField);
 
+gameMain.append(patternSelectorSection, gameSection);
+
 const gameControl = document.createElement('div');
 gameControl.classList.add('game-control');
-
-const patternSelector = document.createElement('select');
-patternSelector.classList.add('pattern-selector');
 
 const resetButton = document.createElement('button');
 resetButton.textContent = 'Reset Game';
@@ -71,7 +85,7 @@ const solutionButton = document.createElement('button');
 solutionButton.textContent = 'Solution';
 solutionButton.classList.add('button');
 
-gameControl.append(patternSelector, resetButton, saveButton, continueButton, solutionButton);
+gameControl.append(resetButton, saveButton, continueButton, solutionButton);
 
 const popupOverlay = document.createElement('div');
 popupOverlay.classList.add('popup-overlay');
@@ -95,7 +109,7 @@ main.append(
   title,
   gameTimer,
   levels,
-  gameSection,
+  gameMain,
   gameControl,
   popupOverlay,
 );

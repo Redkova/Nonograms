@@ -44,8 +44,45 @@ body {
 .levels {
 display: flex;
 gap: 15px;
-margin-bottom: 30px;
+margin-bottom: 15px;
 }
+
+.game-main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.pattern-section {
+  width: 150px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #cfd8dc;
+  border-radius: 15px;
+}
+
+.pattern-selector-text {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #212121;
+}
+
+.pattern-selector {
+  padding: 5px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #007bff;
+  color: #f7f7f7;
+  cursor: pointer;
+  }
 
 .game-section {
 display: grid;
@@ -154,15 +191,6 @@ border: none;
 border-radius: 5px;
 background-color: #007bff;;
 color: #f7f7f7;
-cursor: pointer;
-}
-
-.pattern-selector {
-padding: 5px 5px;
-font-size: 16px;
-border-radius: 5px;
-background-color: #cfd8dc;
-color: #212121;
 cursor: pointer;
 }
 
