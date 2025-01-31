@@ -85,7 +85,11 @@ const solutionButton = document.createElement('button');
 solutionButton.textContent = 'Solution';
 solutionButton.classList.add('button');
 
-gameControl.append(resetButton, saveButton, continueButton, solutionButton);
+const lastWins = document.createElement('button');
+lastWins.textContent = 'Last wins';
+lastWins.classList.add('button');
+
+gameControl.append(resetButton, saveButton, continueButton, solutionButton, lastWins);
 
 const popupOverlay = document.createElement('div');
 popupOverlay.classList.add('popup-overlay');
