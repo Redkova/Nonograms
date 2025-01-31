@@ -778,13 +778,15 @@ function showSolution () {
 }
 
 function saveLastWins (patternName, difficulty, time) {
-  let lastWins = JSON.parse(localStorage.getItem('lastWins')) || [];
+  const lastWins = JSON.parse(localStorage.getItem('lastWins')) || [];
 
   lastWins.push({ patternName, difficulty, time });
 
-  lastWins.sort((a, b) => a.time - b.time);
+  if (lastWins.length > 5) {
+    lastWins.shift();
+  }
 
-  lastWins = lastWins.slice(0, 5);
+  lastWins.sort((a, b) => a.time - b.time);
 
   localStorage.setItem('lastWins', JSON.stringify(lastWins));
 }
