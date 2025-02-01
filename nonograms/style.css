@@ -332,4 +332,22 @@ z-index: 20;
   cursor: pointer;
   border: none;
   background-color: #eb278d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../assets/svg/soundOn.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sound-button.sound-on {
+  background-image: url('../assets/svg/soundOn.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sound-button.sound-off {
+  background-image: url('../assets/svg/soundOff.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
 }

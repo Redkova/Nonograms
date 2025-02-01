@@ -853,7 +853,7 @@ function closeLastWinsModal () {
   lastWinsModal.style.display = 'none';
 }
 
-const soundEnabled = true;
+let soundEnabled = true;
 
 function playSound (src) {
   if (!soundEnabled) return;
@@ -862,3 +862,14 @@ function playSound (src) {
 
   audio.play();
 }
+
+soundButton.addEventListener('click', () => {
+  soundEnabled = !soundEnabled;
+  if (soundEnabled) {
+    soundButton.classList.remove('sound-off');
+    soundButton.classList.add('sound-on');
+  } else {
+    soundButton.classList.remove('sound-on');
+    soundButton.classList.add('sound-off');
+  }
+});
