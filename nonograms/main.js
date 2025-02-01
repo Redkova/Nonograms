@@ -813,8 +813,6 @@ function saveLastWins (patternName, difficulty, time) {
     lastWins.shift();
   }
 
-  lastWins.sort((a, b) => a.time - b.time);
-
   localStorage.setItem('lastWins', JSON.stringify(lastWins));
 }
 
@@ -834,11 +832,13 @@ lastWinsButton.addEventListener('click', () => {
 
 function showLastWinsModal () {
   lastWinsModal.style.display = 'flex';
-  const highScores = JSON.parse(localStorage.getItem('lastWins')) || [];
+  const lastWins = JSON.parse(localStorage.getItem('lastWins')) || [];
+
+  lastWins.sort((a, b) => a.time - b.time);
 
   lastWinsModalList.innerHTML = '';
 
-  highScores.forEach(({ patternName, difficulty, time }) => {
+  lastWins.forEach(({ patternName, difficulty, time }) => {
     const li = document.createElement('li');
     li.innerHTML = `<span>&#9998;  ${capitalizePatternName(patternName)}</span><span>${capitalizeDifficulty(difficulty)}</span><span>${formatTime(time)}</span>`;
     lastWinsModalList.appendChild(li);
