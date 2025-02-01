@@ -144,6 +144,9 @@ lastWinsModalList.classList.add('modal-list');
 lastWinsModal.appendChild(lastWinsModalContent);
 lastWinsModalContent.append(lastWinsModalClose, lastWinsModalHeading, lastWinsModalList);
 
+const soundButton = document.createElement('button');
+soundButton.classList.add('sound-button');
+
 main.append(
   header,
   title,
@@ -152,6 +155,7 @@ main.append(
   gameMain,
   popupOverlay,
   lastWinsModal,
+  soundButton,
 );
 
 bodyElement.append(main);
@@ -404,10 +408,14 @@ function createGameField (pattern) {
       td.dataset.row = row;
       td.dataset.col = col;
 
-      td.addEventListener('click', () => markedCell(td));
+      td.addEventListener('click', () => {
+        markedCell(td);
+        playSound('../assets/sounds/sound3.mp3');
+      });
       td.addEventListener('contextmenu', (e) => {
         e.preventDefault();
         crossedCell(td);
+        playSound('../assets/sounds/sound2.mp3');
       });
       tr.appendChild(td);
     }
@@ -758,6 +766,10 @@ function showPopupMessage (message) {
   popupMessage.textContent = message;
   main.classList.add('inactive');
   popupClose.addEventListener('click', closePopup);
+
+  setTimeout(() => {
+    playSound('../assets/sounds/soundWin.mp3');
+  }, 100);
 }
 
 function closePopup () {
@@ -839,4 +851,14 @@ function showLastWinsModal () {
 
 function closeLastWinsModal () {
   lastWinsModal.style.display = 'none';
+}
+
+const soundEnabled = true;
+
+function playSound (src) {
+  if (!soundEnabled) return;
+
+  const audio = new Audio(src);
+
+  audio.play();
 }
