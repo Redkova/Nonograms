@@ -642,6 +642,8 @@ randomButton.addEventListener('click', () => {
 function startRandomGame () {
   resetGame();
 
+  patternSelector.disabled = true;
+
   const randomLevels = ['easy', 'medium', 'hard'];
   currentLevel = randomLevels[Math.floor(Math.random() * randomLevels.length)];
   currentPatternName = Object.keys(patterns[currentLevel])[Math.floor(Math.random()
