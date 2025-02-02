@@ -19,6 +19,9 @@ soundButton.classList.add('sound-button');
 
 soundSection.append(soundButton);
 
+const nonogram = document.createElement('div');
+nonogram.classList.add('nonogram');
+
 const levels = document.createElement('div');
 levels.classList.add('levels');
 
@@ -175,15 +178,15 @@ lastWinsModalList.classList.add('modal-list');
 lastWinsModal.appendChild(lastWinsModalContent);
 lastWinsModalContent.append(lastWinsModalClose, lastWinsModalHeading, lastWinsModalList);
 
-main.append(
-  header,
-  soundSection,
+nonogram.append(
   levels,
   gameTimer,
   gameMain,
   popupOverlay,
   lastWinsModal,
 );
+
+main.append(header, soundSection, nonogram);
 
 bodyElement.append(main);
 
