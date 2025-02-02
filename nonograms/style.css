@@ -459,8 +459,50 @@ body.dark-mode
   background-repeat: no-repeat;
 }
 
-.theme-button {
-  padding: 15px;
-  margin-top: 10px;
+.theme-switch {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.switch {
+  width: 50px;
+  height: 25px;
+  background-color: #4a000c;
+  border: 2px solid #6a4d00;
+  border-radius: 25px;
+  position: relative;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.switch::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translateY(-50%);
+  transition: 0.3s;
+}
+
+input:checked + .switch {
+  background-color: #fbb7e5;
+  border: 2px solid #eb278d;
+}
+
+input:checked + .switch::before {
+  left: 25px;
+}
+
+.theme-text {
+  margin-left: 10px;
+  font-size: 16px;
 }

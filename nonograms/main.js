@@ -148,8 +148,22 @@ lastWinsModalContent.append(lastWinsModalClose, lastWinsModalHeading, lastWinsMo
 const soundButton = document.createElement('button');
 soundButton.classList.add('sound-button');
 
-const themeButton = document.createElement('button');
-themeButton.classList.add('theme-button');
+const themeSwitch = document.createElement('div');
+themeSwitch.classList.add('theme-switch');
+
+const checkbox = document.createElement('input');
+checkbox.type = 'checkbox';
+checkbox.id = 'theme-toggle';
+
+const label = document.createElement('label');
+label.setAttribute('for', 'theme-toggle');
+label.classList.add('switch');
+
+const themeName = document.createElement('span');
+themeName.textContent = 'Dark';
+themeName.classList.add('theme-text');
+
+themeSwitch.append(checkbox, label, themeName);
 
 main.append(
   header,
@@ -159,7 +173,7 @@ main.append(
   popupOverlay,
   lastWinsModal,
   soundButton,
-  themeButton,
+  themeSwitch,
 );
 
 bodyElement.append(main);
@@ -896,7 +910,7 @@ if (localStorage.getItem('theme') === 'dark') {
   document.body.classList.add('dark-mode');
 }
 
-themeButton.addEventListener('click', () => {
+checkbox.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
 
   if (document.body.classList.contains('dark-mode')) {
