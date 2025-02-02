@@ -37,7 +37,6 @@ body {
 .title {
   font-size: 50px;
   color: #eb278d;
-  ;
 }
 
 .timer {
@@ -72,7 +71,6 @@ body {
 .field-section {
   padding: 5px;
   background-color: #f7f7f7;
-  border: 4px solid #212121;
 }
 
 .game-control {
@@ -144,35 +142,57 @@ box-sizing: border-box;
 border-collapse: collapse;
 }
 
-.game-table {
-width: auto;
-margin: 0;
-padding: 0;
-border-collapse: collapse;
-border: 1px solid black;
+.game-table, .clue-table {
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.game-table td {
-width: 20px;
-height: 20px;
-text-align: center;
-box-sizing: border-box;
-border: 1px solid black;
-cursor: pointer;
-}
-
-.clue-table {
-border-spacing: 0;
-border-collapse: collapse;
-font-size: 12px;
+.game-table td, .clue-table th {
+  border: 1px solid black;
+  padding: 0;
+  margin: 0;
 }
 
 .clue-table th {
-width: 20px;
-height: 20px;
-text-align: center;
-border: 1px solid black;
-border-collapse: collapse;
+  font-size: 12px;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+}
+
+.game-table td {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.top-clue, .left-clue {
+  font-size: 12px;
+}
+
+.top-clue {
+  width: 20px;
+  height: 20px;
+}
+
+.left-clue {
+  height: 20px;
+}
+
+.top-clue,
+.left-clue {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.clue-table th:nth-child(5n) {
+  border-right: 4px solid black;
+}
+
+.clue-table tr:nth-child(5n) th {
+  border-bottom: 4px solid black;
 }
 
 .cell.active {

@@ -408,6 +408,10 @@ function createGameField (pattern) {
       td.dataset.row = row;
       td.dataset.col = col;
 
+      if ((col + 1) % 5 === 0) {
+        td.style.borderRight = '4px solid black';
+      }
+
       td.addEventListener('click', () => {
         markedCell(td);
         playSound('../assets/sounds/sound3.mp3');
@@ -419,8 +423,13 @@ function createGameField (pattern) {
       });
       tr.appendChild(td);
     }
+    if ((row + 1) % 5 === 0) {
+      tr.style.borderBottom = '4px solid black';
+    }
+
     table.appendChild(tr);
   }
+  table.style.borderSpacing = '0';
   gameField.appendChild(table);
 }
 
@@ -484,6 +493,8 @@ function createTopClues (colClues) {
     });
     table.appendChild(tr);
   }
+  table.style.borderSpacing = '0';
+  table.style.borderCollapse = 'collapse';
   topClues.appendChild(table);
 }
 
@@ -512,9 +523,10 @@ function createLeftClues (rowClues) {
         tr.insertBefore(th, tr.firstChild);
       }
     }
-
     table.appendChild(tr);
   });
+  table.style.borderSpacing = '0';
+  table.style.borderCollapse = 'collapse';
   leftClues.appendChild(table);
 }
 
