@@ -150,6 +150,9 @@ lastWinsModalContent.append(lastWinsModalClose, lastWinsModalHeading, lastWinsMo
 const soundButton = document.createElement('button');
 soundButton.classList.add('sound-button');
 
+const themeButton = document.createElement('button');
+themeButton.classList.add('theme-button');
+
 main.append(
   header,
   levels,
@@ -158,6 +161,7 @@ main.append(
   popupOverlay,
   lastWinsModal,
   soundButton,
+  themeButton,
 );
 
 bodyElement.append(main);
@@ -887,5 +891,19 @@ soundButton.addEventListener('click', () => {
   } else {
     soundButton.classList.remove('sound-on');
     soundButton.classList.add('sound-off');
+  }
+});
+
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark-mode');
+}
+
+themeButton.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+
+  if (document.body.classList.contains('dark-mode')) {
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.setItem('theme', 'light');
   }
 });

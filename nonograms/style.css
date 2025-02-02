@@ -19,6 +19,13 @@ body {
   background-repeat: no-repeat;
 }
 
+body.dark-mode {
+  background-image:url('../assets/background_dark_mode.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .main {
   width: 100%;
   height: auto;
@@ -40,10 +47,15 @@ body {
   width: 550px;
 }
 
+body.dark-mode 
+.timer{
+  color: #6a4d00;
+}
+
 .timer {
   font-size: 36px;
   font-weight: bold;
-  color: #72254d;;
+  color: #72254d;
   margin-bottom: 15px;
 }
 
@@ -66,6 +78,11 @@ body {
   cursor: pointer;
 }
 
+body.dark-mode button {
+  border: 4px solid #6a4d00;
+  background-color: #4a000c;
+  color: #f7f7f7;
+}
 
 .game-main {
   display: grid;
@@ -99,11 +116,27 @@ body {
   border-radius: 15px;
 }
 
+body.dark-mode
+.pattern-section {
+  background-color: #6a4d00;
+}
+
+body.dark-mode
+.pattern-selector-text {
+  color: #f7f7f7;
+}
+
+body.dark-mode
+.pattern-selector {
+  background-color: #4a000c;
+  color: #f7f7f7;
+}
+
 .pattern-selector-text {
   margin-top: 0;
   margin-bottom: 5px;
   font-size: 16px;
-  color: #72254d;;
+  color: #72254d;
 }
 
 .pattern-selector {
@@ -120,6 +153,11 @@ body {
 .field-section {
   display: flex;
   justify-content: center;
+}
+
+body.dark-mode
+.game-section {
+  background-color: transparent;
 }
 
 .game-section {
@@ -167,6 +205,11 @@ body {
   margin: 0;
 }
 
+.border-right-thick {
+  border-right: 4px solid black;
+}
+
+
 .clue-table th {
   font-size: 16px;
   text-align: center;
@@ -179,6 +222,11 @@ body {
   height: 30px;
   text-align: center;
   cursor: pointer;
+}
+
+body.dark-mode 
+.top-clue, .left-clue {
+  color: #6a4d00;
 }
 
 .top-clue, .left-clue {
@@ -201,12 +249,40 @@ body {
   margin: 0;
 }
 
+.border-right-thick {
+  border-right: 4px solid black;
+}
+
 .clue-table th:nth-child(5n) {
   border-right: 4px solid black;
 }
 
 .clue-table tr:nth-child(5n) th {
   border-bottom: 4px solid black;
+}
+
+body.dark-mode
+.cell.active {
+  background-color: #6a4d00;
+}
+body.dark-mode
+.cell.empty {
+  background-color: transparent;
+}
+
+body.dark-mode
+.cell.cross {
+  background-color: transparent;
+}
+
+body.dark-mode
+.cell.cross::before{
+  background-color: #6a4d00;;
+}
+
+body.dark-mode
+.cell.cross::after {
+  background-color: #6a4d00;;
 }
 
 .cell.active {
@@ -276,21 +352,21 @@ body {
 }
 
 .popup-close {
-position: absolute;
-top: 5px;
-right: 15px;
-font-size: 24px;
-cursor: pointer;
-color: #212121;;
-background: none;
-border: none;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #212121;;
+  background: none;
+  border: none;
 }
 
 .popup-message {
-padding: 10px;
-font-size: 16px;
-color: #212121;;
-z-index: 20;
+  padding: 10px;
+  font-size: 16px;
+  color: #212121;;
+  z-index: 20;
 }
 
 .modal {
@@ -373,4 +449,10 @@ z-index: 20;
   background-image: url('../assets/svg/soundOff.svg');
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.theme-button {
+  padding: 15px;
+  margin-top: 10px;
+  cursor: pointer;
 }
