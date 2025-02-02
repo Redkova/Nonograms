@@ -57,8 +57,8 @@ body {
 
 .game-main {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 15px;
   justify-content: center;
   align-items: flex-start;
 }
@@ -106,9 +106,8 @@ body {
   }
 
 .field-section {
-  max-width: 500px;
-  padding: 5px;
-  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
 }
 
 .game-section {
@@ -117,6 +116,8 @@ body {
   grid-template-rows: auto 1fr;
   gap: 0;
   box-sizing: border-box;
+  padding: 5px;
+  background-color: #f7f7f7;
 }
 
 .top-clues {
@@ -127,20 +128,20 @@ body {
 }
 
 .left-clues {
-grid-column: 1;
-grid-row: 2;
-display: grid;
-gap: 0;
-box-sizing: border-box;
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  gap: 0;
+  box-sizing: border-box;
 }
 
 .game-field {
-display: grid;
-grid-column: 2;
-grid-row: 2;
-gap: 0;
-box-sizing: border-box;
-border-collapse: collapse;
+  display: grid;
+  grid-column: 2;
+  grid-row: 2;
+  gap: 0;
+  box-sizing: border-box;
+  border-collapse: collapse;
 }
 
 .game-table, .clue-table {
@@ -155,26 +156,26 @@ border-collapse: collapse;
 }
 
 .clue-table th {
-  font-size: 12px;
+  font-size: 16px;
   text-align: center;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 
 .game-table td {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   text-align: center;
   cursor: pointer;
 }
 
 .top-clue, .left-clue {
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .top-clue {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 
 .left-clue {
@@ -197,80 +198,80 @@ border-collapse: collapse;
 }
 
 .cell.active {
-background-color: black;
+  background-color: black;
 }
 
 .cell.empty {
-background-color: white;
+  background-color: white;
 }
 
 .cell.cross {
-position: relative;
-background-color: white;
+  position: relative;
+  background-color: white;
 }
 
 .cell.cross::before,
 .cell.cross::after {
-content: '';
-position: absolute;
-top: 50%;
-left: 50%;
-width: 2px;
-height: 20px;
-background-color: black;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background-color: black;
 }
 
 .cell.cross::before {
-transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .cell.cross::after {
-transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .game-control-button {
-width: 200px;
-padding: 10px 20px;
-font-size: 16px;
-border: 4px solid #eb278d;
-border-radius: 25px;
-background-color: #fbb7e5;
-color: #72254d;
-cursor: pointer;
+  width: 200px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 4px solid #eb278d;
+  border-radius: 25px;
+  background-color: #fbb7e5;
+  color: #72254d;
+  cursor: pointer;
 }
 
 .button {
-padding: 10px 20px;
-font-size: 16px;
-border: none;
-border-radius: 5px;
-border: 4px solid #eb278d;
-background-color: #fbb7e5;
-color: #72254d;
-cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  border: 4px solid #eb278d;
+  background-color: #fbb7e5;
+  color: #72254d;
+  cursor: pointer;
 }
 
 .popup-overlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.8);
-z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
 }
 
 .popup-window {
-position: absolute;
-top: 30%;
-left: 50%;
-transform: translateX(-50%);
-background: #f7f7f7;
-padding: 15px 20px;
-border-radius: 20px;
-text-align: center;
-max-width: 400px;
-width: 100%;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f7f7f7;
+  padding: 15px 20px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
 }
 
 .popup-close {
