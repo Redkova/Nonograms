@@ -11,6 +11,14 @@ titlePicture.classList.add('title-img');
 
 header.appendChild(titlePicture);
 
+const soundSection = document.createElement('div');
+soundSection.classList.add('sound-section');
+
+const soundButton = document.createElement('button');
+soundButton.classList.add('sound-button');
+
+soundSection.append(soundButton);
+
 const levels = document.createElement('div');
 levels.classList.add('levels');
 
@@ -73,7 +81,29 @@ gameField.classList.add('game-field');
 
 gameSection.append(topClues, leftClues, gameField);
 
-fieldSection.appendChild(gameSection);
+const switchButtons = document.createElement('div');
+switchButtons.classList.add('switch-buttons');
+
+const themeSwitch = document.createElement('div');
+themeSwitch.classList.add('theme-switch');
+
+const themeName = document.createElement('span');
+themeName.textContent = 'Dark-mode:';
+themeName.classList.add('theme-text');
+
+const checkbox = document.createElement('input');
+checkbox.type = 'checkbox';
+checkbox.id = 'theme-toggle';
+
+const label = document.createElement('label');
+label.setAttribute('for', 'theme-toggle');
+label.classList.add('switch');
+
+themeSwitch.append(themeName, checkbox, label);
+
+switchButtons.appendChild(themeSwitch);
+
+fieldSection.append(gameSection, switchButtons);
 
 const gameControl = document.createElement('div');
 gameControl.classList.add('game-control');
@@ -145,35 +175,14 @@ lastWinsModalList.classList.add('modal-list');
 lastWinsModal.appendChild(lastWinsModalContent);
 lastWinsModalContent.append(lastWinsModalClose, lastWinsModalHeading, lastWinsModalList);
 
-const soundButton = document.createElement('button');
-soundButton.classList.add('sound-button');
-
-const themeSwitch = document.createElement('div');
-themeSwitch.classList.add('theme-switch');
-
-const checkbox = document.createElement('input');
-checkbox.type = 'checkbox';
-checkbox.id = 'theme-toggle';
-
-const label = document.createElement('label');
-label.setAttribute('for', 'theme-toggle');
-label.classList.add('switch');
-
-const themeName = document.createElement('span');
-themeName.textContent = 'Dark';
-themeName.classList.add('theme-text');
-
-themeSwitch.append(checkbox, label, themeName);
-
 main.append(
   header,
+  soundSection,
   levels,
   gameTimer,
   gameMain,
   popupOverlay,
   lastWinsModal,
-  soundButton,
-  themeSwitch,
 );
 
 bodyElement.append(main);

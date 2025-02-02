@@ -45,9 +45,15 @@ body.dark-mode {
   background-image: url('../assets/pictures/title.png');
   background-repeat: no-repeat;
   background-position: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   width: 550px;
   height: 120px;
+}
+
+.sound-section {
+  min-width: 900px;
+  display: flex;
+  justify-content: end;
 }
 
 body.dark-mode 
@@ -161,6 +167,8 @@ body.dark-mode
 .field-section {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 body.dark-mode
@@ -432,17 +440,14 @@ body.dark-mode
 }
 
 .sound-button {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  padding: 10px;
   cursor: pointer;
   border: none;
   background-color: #eb278d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-image: url('../assets/svg/soundOn.svg');
+  background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -459,10 +464,27 @@ body.dark-mode
   background-repeat: no-repeat;
 }
 
+.switch-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+body.dark-mode
+.theme-switch {
+  background-color: #6a4d00;
+}
+
 .theme-switch {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
   margin-top: 20px;
+  gap: 5px;
+  background-color: #fbb7e5;
+  padding: 10px;
+  border-radius: 15px;
 }
 
 .theme-switch input {
@@ -472,8 +494,7 @@ body.dark-mode
 .switch {
   width: 50px;
   height: 25px;
-  background-color: #4a000c;
-  border: 2px solid #6a4d00;
+  background-color: #ccc;
   border-radius: 25px;
   position: relative;
   cursor: pointer;
@@ -494,8 +515,7 @@ body.dark-mode
 }
 
 input:checked + .switch {
-  background-color: #fbb7e5;
-  border: 2px solid #eb278d;
+  background-color: #4a000c;
 }
 
 input:checked + .switch::before {
@@ -503,6 +523,11 @@ input:checked + .switch::before {
 }
 
 .theme-text {
-  margin-left: 10px;
   font-size: 16px;
+  color: #72254d;
+}
+
+body.dark-mode
+.theme-text  {
+  color: #f7f7f7;
 }
