@@ -6,9 +6,12 @@ main.classList.add('main');
 const header = document.createElement('header');
 header.classList.add('header');
 
-const title = document.createElement('h1');
-title.textContent = 'NONOGRAMS';
-title.classList.add('title');
+const titlePicture = document.createElement('img');
+titlePicture.src = '../assets/pictures/title.png';
+titlePicture.alt = 'Nonograms';
+titlePicture.classList.add('title-img');
+
+header.appendChild(titlePicture);
 
 const levels = document.createElement('div');
 levels.classList.add('levels');
@@ -149,7 +152,6 @@ soundButton.classList.add('sound-button');
 
 main.append(
   header,
-  title,
   levels,
   gameTimer,
   gameMain,

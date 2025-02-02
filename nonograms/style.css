@@ -34,9 +34,10 @@ body {
   align-items: center;
 }
 
-.title {
-  font-size: 50px;
-  color: #eb278d;
+.title-img{
+  padding: 30px 5px;
+  margin-bottom: 30px;
+  width: 550px;
 }
 
 .timer {
