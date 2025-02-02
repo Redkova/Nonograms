@@ -68,11 +68,6 @@ body {
   justify-content: end;
 }
 
-.field-section {
-  padding: 5px;
-  background-color: #f7f7f7;
-}
-
 .game-control {
   max-width: 250px;
   display: flex;
@@ -110,19 +105,25 @@ body {
   cursor: pointer;
   }
 
+.field-section {
+  max-width: 500px;
+  padding: 5px;
+  background-color: #f7f7f7;
+}
+
 .game-section {
-display: grid;
-grid-template-columns: auto 1fr;
-grid-template-rows: auto 1fr;
-gap: 0;
-box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 0;
+  box-sizing: border-box;
 }
 
 .top-clues {
-grid-column: 2;
-display: grid;
-gap: 0; 
-box-sizing: border-box;
+  grid-column: 2;
+  display: grid;
+  gap: 0; 
+  box-sizing: border-box;
 }
 
 .left-clues {
