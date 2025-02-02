@@ -42,9 +42,17 @@ body.dark-mode {
 }
 
 .title-img{
-  padding: 30px 5px;
+  background-image: url('../assets/pictures/title.png');
+  background-repeat: no-repeat;
+  background-position: center;
   margin-bottom: 30px;
   width: 550px;
+  height: 120px;
+}
+
+body.dark-mode 
+.title-img{
+background-image: url('/assets/pictures/titleDark.png');
 }
 
 body.dark-mode 

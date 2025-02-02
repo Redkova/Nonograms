@@ -6,9 +6,7 @@ main.classList.add('main');
 const header = document.createElement('header');
 header.classList.add('header');
 
-const titlePicture = document.createElement('img');
-titlePicture.src = '../assets/pictures/title.png';
-titlePicture.alt = 'Nonograms';
+const titlePicture = document.createElement('div');
 titlePicture.classList.add('title-img');
 
 header.appendChild(titlePicture);
