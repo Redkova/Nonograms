@@ -17,7 +17,18 @@ soundSection.classList.add('sound-section');
 const soundButton = document.createElement('button');
 soundButton.classList.add('sound-button');
 
-soundSection.append(soundButton);
+const burgerButton = document.createElement('button');
+burgerButton.classList.add('burger-button');
+
+const burgerMenu = document.createElement('div');
+burgerMenu.classList.add('burger-menu');
+
+const burgerMenuContent = document.createElement('div');
+burgerMenuContent.classList.add('burger-menu-content');
+
+burgerMenu.appendChild(burgerMenuContent);
+
+soundSection.append(soundButton, burgerButton, burgerMenu);
 
 const nonogram = document.createElement('div');
 nonogram.classList.add('nonogram');
@@ -932,5 +943,29 @@ checkbox.addEventListener('click', () => {
     localStorage.setItem('theme', 'dark');
   } else {
     localStorage.setItem('theme', 'light');
+  }
+});
+
+for (let i = 0; i < 3; i++) {
+  const burgerLine = document.createElement('span');
+  burgerLine.classList.add('burger-line');
+  burgerButton.appendChild(burgerLine);
+}
+
+const gameControlButtons = document.querySelectorAll('.game-control-button');
+gameControlButtons.forEach((gameControlButton) => {
+  const clonedGameControlButton = gameControlButton.cloneNode(true);
+  burgerMenuContent.appendChild(clonedGameControlButton);
+});
+
+burgerButton.addEventListener('click', () => {
+  if (burgerMenu.classList.contains('active')) {
+    burgerMenu.classList.remove('active');
+    burgerButton.classList.remove('active');
+    burgerMenuContent.classList.remove('active');
+  } else {
+    burgerMenu.classList.add('active');
+    burgerButton.classList.add('active');
+    burgerMenuContent.classList.add('active');
   }
 });
