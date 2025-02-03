@@ -620,7 +620,10 @@ function updateTimerDisplay () {
 function markedCell (cell) {
   if (!timer) startTimer();
 
-  if (cell.classList.contains('active')) {
+  if (cell.classList.contains('cross')) {
+    cell.classList.remove('cross');
+    cell.classList.add('active');
+  } else if (cell.classList.contains('active')) {
     cell.classList.remove('active');
     cell.classList.add('empty');
   } else {
