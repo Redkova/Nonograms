@@ -20,7 +20,7 @@ body {
 }
 
 body.dark-mode {
-  background-image:url('../../assets/background_dark_mode.png');
+  background-image:url('assets/background_dark_mode.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,7 +43,7 @@ body.dark-mode {
 }
 
 .title-img{
-  background-image: url('../../assets/pictures/title.png');
+  background-image: url('assets/pictures/title.png');
   background-repeat: no-repeat;
   background-position: center;
   margin-bottom: 20px;
@@ -53,7 +53,7 @@ body.dark-mode {
 
 body.dark-mode 
 .title-img{
-background-image: url('../../assets/pictures/titleDark.png');
+background-image: url('assets/pictures/titleDark.png');
 }
 
 .sound-section {
@@ -460,20 +460,20 @@ body.dark-mode
   cursor: pointer;
   border: none;
   background-color: #eb278d;
-  background-image: url('../../assets/svg/soundOn.svg');
+  background-image: url('assets/svg/soundOn.svg');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .sound-button.sound-on {
-  background-image: url('../../assets/svg/soundOn.svg');
+  background-image: url('assets/svg/soundOn.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .sound-button.sound-off {
-  background-image: url('../../assets/svg/soundOff.svg');
+  background-image: url('assets/svg/soundOff.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
