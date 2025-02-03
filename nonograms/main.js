@@ -444,12 +444,12 @@ function createGameField (pattern) {
 
       td.addEventListener('click', () => {
         markedCell(td);
-        playSound('../assets/sounds/sound3.mp3');
+        playSound('../../assets/sounds/sound3.mp3');
       });
       td.addEventListener('contextmenu', (e) => {
         e.preventDefault();
         crossedCell(td);
-        playSound('../assets/sounds/sound2.mp3');
+        playSound('../../assets/sounds/sound2.mp3');
       });
       tr.appendChild(td);
     }
@@ -815,7 +815,7 @@ function showPopupMessage (message) {
   popupClose.addEventListener('click', closePopup);
 
   setTimeout(() => {
-    playSound('../assets/sounds/soundWin.mp3');
+    playSound('../../assets/sounds/soundWin.mp3');
   }, 100);
 }
 
