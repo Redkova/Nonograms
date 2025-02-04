@@ -743,4 +743,16 @@ body.dark-mode
     right: 0;
     bottom: 0;
   }
+  .title-img {
+    background-image: url('assets/pictures/title280.png');
+    width: 300px;
+    height: 60px;
+  }
+
+  body.dark-mode 
+  .title-img {
+    background-image: url('assets/pictures/titleDark280.png');
+    width: 300px;
+    height: 60px;
+  }
 }
