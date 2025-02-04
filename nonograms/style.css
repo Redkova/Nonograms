@@ -121,7 +121,7 @@ border: none;
 .burger-line {
   display: block;
   width: 30px;
-  height: 2px;
+  height: 3px;
   background-color: #eb278d;
   transition: 0.3s;
 }
@@ -455,7 +455,7 @@ body.dark-mode
 }
 
 body.dark-mode 
-button:hover {
+.button:hover {
   border: 4px solid #4a000c;
   background-color: #6a4d00;
   color: #131e41;
