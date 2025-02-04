@@ -412,9 +412,9 @@ body.dark-mode
   padding: 10px 20px;
   font-size: 16px;
   border: 4px solid #a2e2fe;
+  background-color: #eb278d;
+  color: #f7f7f7;
   border-radius: 25px;
-  background-color: #fbb7e5;
-  color: #72254d;
   cursor: pointer;
 }
 
