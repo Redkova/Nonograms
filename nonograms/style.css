@@ -46,6 +46,7 @@ body.dark-mode {
   background-image: url('assets/pictures/title.png');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
   margin-bottom: 20px;
   width: 550px;
   height: 120px;
@@ -581,8 +582,38 @@ body.dark-mode
   color: #f7f7f7;
 }
 
+@media screen and (max-width: 1000px) {
+  .main {
+    margin: 0;
+  }
 
-@media screen and (max-width: 768px) {
+  .game-main {
+    gap: 5px;
+
+  }
+
+.clue-table th {
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+}
+
+.game-table td {
+  width: 20px;
+  height: 20px;
+}
+
+.top-clue, .left-clue {
+  font-size: 12px;
+}
+
+.top-clue {
+  width: 20px;
+  height: 20px;
+}
+}
+
+@media screen and (max-width: 830px) {
   .burger-button {
     display: flex;
     z-index: 550;
@@ -644,5 +675,14 @@ body.dark-mode
     color: #72254d;
     cursor: pointer;
     z-index: 550;
+  }
+  .title-img{
+    margin-bottom: 10px;
+    width: 500px;
+    height: 100px;
+  }
+
+  .game-main {
+    grid-template-columns: 1fr;
   }
 }
