@@ -755,4 +755,11 @@ body.dark-mode
     width: 300px;
     height: 60px;
   }
+
+  .button {
+    padding: 5px 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    height: 54px;
+  }
 }
