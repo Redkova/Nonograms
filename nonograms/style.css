@@ -728,4 +728,9 @@ body.dark-mode
   .game-main {
     grid-template-columns: 1fr;
   }
+
+  .button {
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
 }
