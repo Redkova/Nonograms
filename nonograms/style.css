@@ -79,6 +79,11 @@ background-image: url('assets/pictures/titleDark.png');
   background-repeat: no-repeat;
 }
 
+body.dark-mode 
+.sound-button  {
+background-color: #4a000c;
+}
+
 .sound-button.sound-on {
   background-image: url('assets/svg/soundOn.svg');
   background-size: contain;
@@ -107,12 +112,23 @@ background-image: url('assets/pictures/titleDark.png');
 
 }
 
+body.dark-mode 
+.burger-button {
+background-color: #4a000c;
+border: none;
+}
+
 .burger-line {
   display: block;
   width: 30px;
   height: 2px;
   background-color: #eb278d;
   transition: 0.3s;
+}
+
+body.dark-mode 
+.burger-line {
+background-color: #6a4d00;
 }
 
 .burger-menu-content {
@@ -160,7 +176,8 @@ border: 4px solid #6a4d00;
   color: #72254d;
 }
 
-body.dark-mode button {
+body.dark-mode 
+.button {
   border: 4px solid #6a4d00;
   background-color: #4a000c;
   color: #f7f7f7;
@@ -422,6 +439,13 @@ body.dark-mode
   color: #f7f7f7;
   border-radius: 25px;
   cursor: pointer;
+}
+
+body.dark-mode 
+.game-control-button {
+  border: 4px solid #6a4d00;
+  background-color: #4a000c;
+  color: #f7f7f7;
 }
 
 .game-control-button:hover {
