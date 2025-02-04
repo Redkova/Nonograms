@@ -576,6 +576,7 @@ easyButton.addEventListener('click', () => {
   stopTimer();
   resetTimer();
   startGame();
+  patternSelector.disabled = false;
 });
 
 mediumButton.addEventListener('click', () => {
@@ -583,6 +584,7 @@ mediumButton.addEventListener('click', () => {
   stopTimer();
   resetTimer();
   startGame();
+  patternSelector.disabled = false;
 });
 
 hardButton.addEventListener('click', () => {
@@ -590,6 +592,7 @@ hardButton.addEventListener('click', () => {
   stopTimer();
   resetTimer();
   startGame();
+  patternSelector.disabled = false;
 });
 
 let timer = null;
