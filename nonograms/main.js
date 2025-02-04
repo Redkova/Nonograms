@@ -527,8 +527,9 @@ function createTopClues (colClues) {
     colClues.forEach((clue) => {
       const th = document.createElement('th');
       th.classList.add('top-clue');
-      if (clue.length > i) {
-        th.textContent = clue[i];
+      const reversedIndex = clue.length - maxClues + i;
+      if (reversedIndex >= 0) {
+        th.textContent = clue[reversedIndex];
       }
       tr.appendChild(th);
     });
