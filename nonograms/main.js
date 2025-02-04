@@ -959,6 +959,17 @@ for (let i = 0; i < 3; i++) {
 const gameControlButtons = document.querySelectorAll('.game-control-button');
 gameControlButtons.forEach((gameControlButton) => {
   const clonedGameControlButton = gameControlButton.cloneNode(true);
+  function closeMenu () {
+    burgerMenu.classList.remove('active');
+    burgerButton.classList.remove('active');
+    burgerMenuContent.classList.remove('active');
+  }
+  gameControlButton.addEventListener('click', closeMenu);
+
+  clonedGameControlButton.addEventListener('click', () => {
+    gameControlButton.click();
+    closeMenu();
+  });
   burgerMenuContent.appendChild(clonedGameControlButton);
 });
 
