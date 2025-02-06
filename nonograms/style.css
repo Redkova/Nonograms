@@ -275,7 +275,7 @@ body.dark-mode
 
 body.dark-mode
 .game-section {
-  background-color: #131e41;
+  background-color: #6a4d00;
 }
 
 .top-clues {
@@ -333,12 +333,12 @@ body.dark-mode
 
 body.dark-mode 
 .top-clue {
-  color: #6a4d00;
+  color: #f7f7f7;
 }
 
 body.dark-mode 
 .left-clue {
-  color: #6a4d00;
+  color: #f7f7f7;
 }
 
 .top-clue {
@@ -371,7 +371,7 @@ body.dark-mode
 
 body.dark-mode
 .cell.active {
-  background-color: #6a4d00;
+  background-color: #f7f7f7;
 }
 
 .cell.empty {
@@ -410,7 +410,7 @@ body.dark-mode
 
 body.dark-mode
 .cell.cross::before{
-  background-color: #6a4d00;;
+  background-color: #f7f7f7;
 }
 
 .cell.cross::after {
@@ -419,7 +419,7 @@ body.dark-mode
 
 body.dark-mode
 .cell.cross::after {
-  background-color: #6a4d00;;
+  background-color: #f7f7f7;
 }
 
 .game-control {
