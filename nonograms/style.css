@@ -140,7 +140,7 @@ background-color: #6a4d00;
 }
 
 .nonogram {
-  background-color: #f7f7f7;
+  backdrop-filter: blur(20px);
   padding: 15px;
   border-radius: 15px;
   border: 4px solid #eb278d;
@@ -148,8 +148,8 @@ background-color: #6a4d00;
 
 body.dark-mode
 .nonogram {
-background-color: #081233;
-border: 4px solid #6a4d00;
+  backdrop-filter: blur(10px);
+  border: 4px solid #6a4d00;
 }
 
 .levels {
