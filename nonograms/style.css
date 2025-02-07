@@ -455,6 +455,13 @@ body.dark-mode
 }
 
 body.dark-mode 
+.game-control-button:hover {
+  border: 4px solid #4a000c;
+  background-color: #6a4d00;
+  color: #131e41;
+}
+
+body.dark-mode 
 .button:hover {
   border: 4px solid #4a000c;
   background-color: #6a4d00;
