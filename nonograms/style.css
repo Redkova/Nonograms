@@ -148,9 +148,7 @@ background-color: #6a4d00;
 
 body.dark-mode
 .nonogram {
-  background-color: transparent;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(19, 30, 65, 0.3);
   border: 4px solid #6a4d00;
 }
 
