@@ -1,0 +1,381 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.sound-section {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 15px;
+  gap: 15px;
+}
+
+.sound-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  background-color: $color-pink;
+  background-image: url('../../public/assets/svg/soundOn.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &.sound-on {
+    background-image: url('../../public/assets/svg/soundOn.svg');
+  }
+
+  &.sound-off {
+    background-image: url('../../public/assets/svg/soundOff.svg');
+  }
+
+  @include dark-mode {
+    background-color: $color-dark-red;
+  }
+}
+
+.burger-button {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $color-light-pink;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 0;
+
+  @include dark-mode {
+    background-color: $color-dark-red;
+  }
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    display: flex;
+    z-index: 550;
+  }
+
+  &.active {
+    span:nth-child(1) {
+      transform: translateY(13px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      transform: translateY(-13px) rotate(-45deg);
+    }
+  }
+}
+
+.burger-line {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: $color-pink;
+  transition: 0.3s;
+
+  @include dark-mode {
+    background-color: $color-dark-gold;
+  }
+}
+
+.burger-menu {
+  @media screen and (max-width: $tablet-breakpoint) {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: $color-white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 100;
+  }
+
+  &.active {
+    @media screen and (max-width: $tablet-breakpoint) {
+      transform: translateX(0);
+    }
+  }
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.burger-menu-content {
+  display: none;
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    &.active {
+      position: fixed;
+      top: 15%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+  }
+
+  .game-control-button {
+    @media screen and (max-width: $tablet-breakpoint) {
+      display: block;
+      width: 300px;
+      padding: 20px;
+      font-size: 20px;
+      border: 4px solid $color-border-blue;
+      border-radius: 25px;
+      background-color: $color-light-pink;
+      color: $color-text;
+      cursor: pointer;
+      z-index: 550;
+    }
+  }
+}
+
+.levels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 15px;
+  border: 4px solid $color-border-blue;
+  background-color: $color-pink;
+  color: $color-white;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-pink;
+    background-color: $color-light-pink;
+    color: $color-text;
+  }
+
+  @include dark-mode {
+    border-color: $color-dark-gold;
+    background-color: $color-dark-red;
+    color: $color-white;
+
+    &:hover {
+      border-color: $color-dark-red;
+      background-color: $color-dark-gold;
+      color: $color-dark-blue;
+    }
+  }
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    height: 54px;
+  }
+}
+
+.timer {
+  font-size: 36px;
+  font-weight: bold;
+  color: $color-text;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+
+  @include dark-mode {
+    color: $color-dark-gold;
+  }
+}
+
+.game-main {
+  display: grid;
+  grid-template-columns: 200px 2fr 200px;
+  gap: 15px;
+  justify-content: center;
+  align-items: flex-start;
+
+  @media screen and (max-width: $desktop-breakpoint) {
+    gap: 5px;
+  }
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.choose-picture-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pattern-section {
+  width: 150px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $color-border-blue;
+  border-radius: 15px;
+
+  @include dark-mode {
+    background-color: $color-dark-gold;
+  }
+}
+
+.pattern-selector-text {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: $color-text;
+
+  @include dark-mode {
+    color: $color-white;
+  }
+}
+
+.pattern-selector {
+  padding: 5px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: $color-pink;
+  color: $color-white;
+  cursor: pointer;
+
+  @include dark-mode {
+    background-color: $color-dark-red;
+    color: $color-white;
+  }
+}
+
+.game-control {
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+
+  .game-control-button {
+    width: 200px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 4px solid $color-border-blue;
+    background-color: $color-pink;
+    color: $color-white;
+    border-radius: 25px;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-pink;
+      background-color: $color-light-pink;
+      color: $color-text;
+    }
+
+    @include dark-mode {
+      border-color: $color-dark-gold;
+      background-color: $color-dark-red;
+      color: $color-white;
+
+      &:hover {
+        border-color: $color-dark-red;
+        background-color: $color-dark-gold;
+        color: $color-dark-blue;
+      }
+    }
+
+    @media screen and (max-width: $tablet-breakpoint) {
+      display: none;
+    }
+  }
+}
+
+.switch-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.theme-switch {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 20px;
+  gap: 5px;
+  background-color: $color-light-pink;
+  padding: 10px;
+  border-radius: 15px;
+
+  @include dark-mode {
+    background-color: $color-dark-gold;
+  }
+
+  input {
+    display: none;
+  }
+}
+
+.switch {
+  width: 50px;
+  height: 25px;
+  background-color: #ccc;
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    transition: 0.3s;
+  }
+}
+
+input:checked + .switch {
+  background-color: $color-dark-red;
+
+  &::before {
+    left: 25px;
+  }
+}
+
+.theme-text {
+  font-size: 16px;
+  color: $color-text;
+
+  @include dark-mode {
+    color: $color-white;
+  }
+}

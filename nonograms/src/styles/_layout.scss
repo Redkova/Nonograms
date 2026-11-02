@@ -1,0 +1,57 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.main {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 30px;
+
+  @media screen and (max-width: $desktop-breakpoint) {
+    margin: 0;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-img {
+  background-image: url('../../public/assets/pictures/title.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin-bottom: 20px;
+  width: 550px;
+  height: 120px;
+  z-index: 600;
+
+  @include dark-mode {
+    background-image: url('../../public/assets/pictures/titleDark.png');
+  }
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    margin-bottom: 10px;
+    width: 500px;
+    height: 100px;
+  }
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    background-image: url('../../public/assets/pictures/title280.png');
+    width: 300px;
+    height: 60px;
+  }
+
+  @include dark-mode {
+    @media screen and (max-width: $mobile-breakpoint) {
+      background-image: url('../../public/assets/pictures/titleDark280.png');
+      width: 300px;
+      height: 60px;
+    }
+  }
+}

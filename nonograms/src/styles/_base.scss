@@ -1,0 +1,27 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: $max-width;
+  height: 100vh;
+  margin: 0 auto;
+  background-image: url('../../public/assets/nanogram_background2-2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &.dark-mode {
+    background-image: url('../../public/assets/background_dark_mode.png');
+  }
+}
