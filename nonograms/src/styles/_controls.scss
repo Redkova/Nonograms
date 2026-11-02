@@ -16,17 +16,17 @@
   cursor: pointer;
   border: none;
   background-color: $color-pink;
-  background-image: url('../../public/assets/svg/soundOn.svg');
+  background-image: url('/assets/svg/soundOn.svg');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 
   &.sound-on {
-    background-image: url('../../public/assets/svg/soundOn.svg');
+    background-image: url('/assets/svg/soundOn.svg');
   }
 
   &.sound-off {
-    background-image: url('../../public/assets/svg/soundOff.svg');
+    background-image: url('/assets/svg/soundOff.svg');
   }
 
   @include dark-mode {
@@ -88,6 +88,7 @@
   @media screen and (max-width: $tablet-breakpoint) {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
     background: $color-white;
@@ -96,8 +97,11 @@
     align-items: center;
     justify-content: center;
     transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
     z-index: 100;
+
+    @include dark-mode {
+      background-color: $color-black;
+    }
   }
 
   &.active {
@@ -144,6 +148,11 @@
       color: $color-text;
       cursor: pointer;
       z-index: 550;
+      @include dark-mode {
+        border-color: $color-dark-gold;
+        background-color: $color-dark-red;
+        color: $color-white;
+      }
     }
   }
 }

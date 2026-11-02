@@ -4,6 +4,7 @@
 html {
   scroll-behavior: smooth;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 *,
@@ -14,14 +15,14 @@ html {
 
 body {
   max-width: $max-width;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
-  background-image: url('../../public/assets/nanogram_background2-2.png');
+  background-image: url('/assets/nanogram_background2-2.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   &.dark-mode {
-    background-image: url('../../public/assets/background_dark_mode.png');
+    background-image: url('/assets/background_dark_mode.png');
   }
 }

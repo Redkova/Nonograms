@@ -3,15 +3,17 @@
 
 .main {
   width: 100%;
+  max-width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 30px;
-
+  margin: 0;
+  padding: 0 30px;
+  box-sizing: border-box;
   @media screen and (max-width: $desktop-breakpoint) {
-    margin: 0;
+    padding: 0;
   }
 }
 
@@ -22,7 +24,7 @@
 }
 
 .title-img {
-  background-image: url('../../public/assets/pictures/title.png');
+  background-image: url('/assets/pictures/title.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -32,7 +34,7 @@
   z-index: 600;
 
   @include dark-mode {
-    background-image: url('../../public/assets/pictures/titleDark.png');
+    background-image: url('/assets/pictures/titleDark.png');
   }
 
   @media screen and (max-width: $tablet-breakpoint) {
@@ -42,14 +44,14 @@
   }
 
   @media screen and (max-width: $mobile-breakpoint) {
-    background-image: url('../../public/assets/pictures/title280.png');
+    background-image: url('/assets/pictures/title280.png');
     width: 300px;
     height: 60px;
   }
 
   @include dark-mode {
     @media screen and (max-width: $mobile-breakpoint) {
-      background-image: url('../../public/assets/pictures/titleDark280.png');
+      background-image: url('/assets/pictures/titleDark280.png');
       width: 300px;
       height: 60px;
     }
